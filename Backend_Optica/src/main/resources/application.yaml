@@ -1,0 +1,50 @@
+spring:
+
+  # NOMBRE DE LA APLICACIÓN
+  application:
+    name: ${SPRING_APPLICATION_NAME}
+  # BASE DE DATOS
+  datasource:
+    # URL de conexión a PostgreSQL
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  # JPA / HIBERNATE
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+  # CORREO ELECTRÓNICO
+  mail:
+    # Servidor SMTP de Gmail
+    host: smtp.gmail.com
+    # Puerto SMTP con STARTTLS
+    port: 587
+    # Correo remitente.
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 3000
+          timeout: 3000
+          writetimeout: 3000
+# SERVIDOR
+server:
+  port: 8083
+
+jwt:
+
+  secret: ${JWT_SECRET}
+
+# ==========================================================

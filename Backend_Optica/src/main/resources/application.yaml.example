@@ -1,0 +1,104 @@
+# ==========================================================
+# CONFIGURACIÓN PRINCIPAL: application.yml
+# ==========================================================
+
+spring:
+
+  # --- NOMBRE DE LA APLICACIÓN
+  # Identifica la app en logs y herramientas de monitoreo.
+  # Si la variable SPRING_APPLICATION_NAME no está en el .env,
+  # usa "Startup_One" como valor por defecto.
+  application:
+    name: ${SPRING_APPLICATION_NAME:Startup_One}
+
+  # --- BASE DE DATOS
+  datasource:
+
+    # URL de conexión a PostgreSQL.
+    # Formato: jdbc:postgresql://host:puerto/nombre_base_datos
+    # El valor viene del .env → SPRING_DATASOURCE_URL
+    url: ${SPRING_DATASOURCE_URL}
+
+    # Usuario de la base de datos.
+    # El valor viene del .env → SPRING_DATASOURCE_USERNAME
+    username: ${SPRING_DATASOURCE_USERNAME}
+
+    # Contraseña de la base de datos.
+    # El valor viene del .env → SPRING_DATASOURCE_PASSWORD
+    password: ${SPRING_DATASOURCE_PASSWORD}
+
+    # Driver JDBC que Spring usa para hablar con PostgreSQL.
+    # Este debe coincidir con la dependencia en el pom.xml.
+    driver-class-name: org.postgresql.Driver
+
+  # --- JPA / HIBERNATE
+  jpa:
+
+    # Dialecto SQL que Hibernate usa para generar consultas.
+    # Le dice que estamos en PostgreSQL y no en MySQL u otro.
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+    hibernate:
+      # Comportamiento de Hibernate al arrancar la aplicación.
+      # validate → solo verifica que las tablas coincidan con
+      #            las entidades Java. No crea ni modifica nada.
+      # Otras opciones: create, create-drop, update, none
+      ddl-auto: validate
+
+    # Muestra las consultas SQL generadas en la consola.
+    # false en producción, true solo para depurar en desarrollo.
+    show-sql: false
+
+  # --- CORREO ELECTRÓNICO
+  mail:
+
+    # Servidor SMTP de Gmail para envío de correos.
+    host: smtp.gmail.com
+
+    # Puerto SMTP con STARTTLS (cifrado en tránsito).
+    port: 587
+
+    # Correo remitente. Viene del .env → MAIL_USERNAME
+    username: ${MAIL_USERNAME}
+
+    # Contraseña de aplicación de Gmail. Viene del .env → MAIL_PASSWORD
+    # No es la contraseña normal de Gmail, es una clave especial
+    # que se genera en: Google → Seguridad → Contraseñas de aplicación
+    password: ${MAIL_PASSWORD}
+
+    properties:
+      mail:
+        smtp:
+          # Exige autenticación con usuario y contraseña al conectar.
+          auth: true
+
+          starttls:
+            # Activa el cifrado STARTTLS en la conexión SMTP.
+            enable: true
+
+            # Obliga a que STARTTLS esté disponible.
+            # Si el servidor no lo soporta, la conexión falla.
+            required: true
+
+          # Tiempo máximo para establecer la conexión (ms).
+          # Si el servidor no responde en 3s, lanza error.
+          connectiontimeout: 3000
+
+          # Tiempo máximo esperando respuesta del servidor (ms).
+          timeout: 3000
+
+          # Tiempo máximo para enviar datos al servidor (ms).
+          writetimeout: 3000
+
+# --- JWT (JSON Web Token)
+# Configuración para la autenticación por tokens.
+# Va fuera del bloque "spring" porque es una propiedad propia,
+# no de Spring Boot.
+jwt:
+
+  # Clave secreta para firmar y verificar los tokens de sesión.
+  # Viene del .env → JWT_SECRET
+  # Nunca debe estar escrita directamente aquí en texto plano.
+  secret: ${JWT_SECRET}
+
+# ==========================================================
