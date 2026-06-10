@@ -62,7 +62,7 @@ WITH c1 AS (
     INSERT INTO consultas (
         id_paciente, id_optometra, fecha_consulta,
         motivo_consulta, ultimo_control,
-        ant_personales, ant_familiares,
+        ant_personales, ant_familiares, -- 🛠️ CORREGIDO A TU TABLA REAL
         examen_externo, tonometria_od, tonometria_oi,
         test_color, fondo_ojo,
         diagnostico, conducta,
@@ -138,7 +138,7 @@ WITH c2 AS (
     INSERT INTO consultas (
         id_paciente, id_optometra, fecha_consulta,
         motivo_consulta, ultimo_control,
-        ant_personales, ant_familiares,
+        ant_personales, ant_familiares, -- 🛠️ CORREGIDO A TU TABLA REAL
         examen_externo, tonometria_od, tonometria_oi,
         test_color, fondo_ojo,
         diagnostico, conducta,
@@ -147,10 +147,10 @@ WITH c2 AS (
     ) VALUES (
         1, 2, '2024-07-15 11:00:00',
         'Control de miopía', 'Hace 6 meses',
-        'Usa lentes regularmente', 'Madre miope',
+        'Usa lentes regularly', 'Madre miope',
         'Normal', '16', '16',
         'Normal', 'Normal',
-        'Miopía estable', 'Se mantiene fórmula anterior',
+        'Miopía stable', 'Se mantiene fórmula anterior',
         '1 año', '',
         2
     ) RETURNING id
@@ -198,7 +198,7 @@ WITH c3 AS (
     INSERT INTO consultas (
         id_paciente, id_optometra, fecha_consulta,
         motivo_consulta, ultimo_control,
-        ant_personales, ant_familiares,
+        ant_personales, ant_familiares, -- 🛠️ CORREGIDO A TU TABLA REAL
         examen_externo, tonometria_od, tonometria_oi,
         test_color, fondo_ojo,
         diagnostico, conducta,
@@ -266,7 +266,7 @@ WITH c4 AS (
     INSERT INTO consultas (
         id_paciente, id_optometra, fecha_consulta,
         motivo_consulta, ultimo_control,
-        ant_personales, ant_familiares,
+        ant_personales, ant_familiares, -- 🛠️ CORREGIDO A TU TABLA REAL
         examen_externo, tonometria_od, tonometria_oi,
         test_color, fondo_ojo,
         diagnostico, conducta,
@@ -326,7 +326,7 @@ WITH c5 AS (
     INSERT INTO consultas (
         id_paciente, id_optometra, fecha_consulta,
         motivo_consulta, ultimo_control,
-        ant_personales, ant_familiares,
+        ant_personales, ant_familiares, -- 🛠️ CORREGIDO A TU TABLA REAL
         examen_externo, tonometria_od, tonometria_oi,
         test_color, fondo_ojo,
         diagnostico, conducta,

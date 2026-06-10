@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PacienteRepository extends JpaRepository<PacienteEntity, Integer> {
 
-    @Query("SELECT paciente FROM PacienteEntity  paciente WHERE " +
-            "(:nombreCompleto IS NULL OR LOWER(paciente.nombreCompleto) LIKE LOWER(CONCAT('%',:nombreCompleto,'%')))AND " +
-            "(:numeroDocumento IS NULL OR paciente.numeroDocumento LIKE CONCAT('%',:numeroDocumento,'%')) AND " +
+    @Query("SELECT paciente FROM PacienteEntity paciente WHERE " +
+            "(:nombreCompleto IS NULL OR paciente.nombreCompleto LIKE :nombreCompleto) AND " +
+            "(:numeroDocumento IS NULL OR paciente.numeroDocumento LIKE :numeroDocumento) AND " +
             "(:idEstado IS NULL OR paciente.estado.id = :idEstado)")
     Page<PacienteEntity> buscarConFiltros(
             @Param("nombreCompleto") String nombreCompleto,

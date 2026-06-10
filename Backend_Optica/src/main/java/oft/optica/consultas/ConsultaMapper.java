@@ -5,6 +5,8 @@ import oft.optica.catalogos.estado_consulta.EstadoConsultaEntity;
 import oft.optica.pacientes.PacienteEntity;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class ConsultaMapper {
 
@@ -30,8 +32,7 @@ public class ConsultaMapper {
                 consulta.getEstado().getCodigo(),
                 consulta.getFechaCierre(),
                 consulta.getMedicion() != null ? consulta.getMedicion().getId() : null,
-                consulta.getArchivoAdjuntos() != null ? consulta.getArchivoAdjuntos().size() : 0
-        );
+                0);
     }
 
     public ConsultaEntity toEntity(ConsultaRequest dto,
@@ -41,9 +42,11 @@ public class ConsultaMapper {
         return ConsultaEntity.builder()
                 .paciente(paciente)
                 .optometra(optometra)
+                .fechaConsulta(LocalDateTime.now())
                 .motivoConsulta(dto.motivoConsulta())
                 .ultimoControl(dto.ultimoControl())
                 .antecedentes(dto.antecedentes())
+                .antecedentesFamiliares(dto.antecedentesFamiliares())
                 .examenExterno(dto.examenExterno())
                 .tonometriaOd(dto.tonometriaOd())
                 .tonometriaOi(dto.tonometriaOi())
@@ -68,6 +71,7 @@ public class ConsultaMapper {
         update.setMotivoConsulta(dto.motivoConsulta());
         update.setUltimoControl(dto.ultimoControl());
         update.setAntecedentes(dto.antecedentes());
+        update.setAntecedentesFamiliares(dto.antecedentesFamiliares());
         update.setExamenExterno(dto.examenExterno());
         update.setTonometriaOd(dto.tonometriaOd());
         update.setTonometriaOi(dto.tonometriaOi());

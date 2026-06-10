@@ -1,0 +1,621 @@
+{
+  "info": {
+    "_postman_id": "bbe0793a-8b94-4185-926a-b16efdb04242",
+    "name": "Startup Optica",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49378470"
+  },
+  "item": [
+    {
+      "name": "Pacientes",
+      "item": [
+        {
+          "name": "Consultar",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/api/pacientes/7",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "pacientes",
+                "7"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"tipoDocumento\": 1, \r\n    \"numeroDocumento\": \"1020304050\",\r\n    \"nombreCompleto\": \"Diana Maritza Arenas\",\r\n    \"fechaNacimiento\": \"1994-08-25\",\r\n    \"genero\": \"F\",\r\n    \"estadoCivil\": \"Soltero\",\r\n    \"ocupacion\": \"Diseñadora\",\r\n    \"direccion\": \"Calle 45 # 12-34\",\r\n    \"telefono\": \"3124445566\",\r\n    \"eps\": 1,\r\n    \"tipoVinculacion\": \"Contributivo\",\r\n    \"estado\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/pacientes",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "pacientes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"tipoDocumento\": 2, \r\n    \"numeroDocumento\": \"987654321\",\r\n    \"nombreCompleto\": \"Ana Rodríguez López\",\r\n    \"fechaNacimiento\": \"1985-09-22\",\r\n    \"genero\": \"F\",\r\n    \"estadoCivil\": \"Casada\",\r\n    \"ocupacion\": \"Directora de Colegio\", \r\n    \"direccion\": \"Carrera 15 # 100-30\",\r\n    \"telefono\": \"3209998877\", \r\n    \"eps\": 2, \r\n    \"tipoVinculacion\": \"Contributivo\",\r\n    \"estado\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/pacientes/2",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "pacientes",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cambiar estado",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"idEstado\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/pacientes/2/estado",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "pacientes",
+                "2",
+                "estado"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Consultas",
+      "item": [
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"paciente\": 1,\r\n    \"optometra\": 2,\r\n    \"motivoConsulta\": \"Control anual por visión borrosa en el ojo izquierdo.\",\r\n    \"ultimoControl\": \"Hace un año\",\r\n    \"antecedentes\": \"Ninguno de importancia\",\r\n    \"antecedentesFamiliares\": \"Madre miope, padre astigmático\",\r\n    \"examenExterno\": \"Normal, sin alteración en anexos ocular.\",\r\n    \"tonometriaOd\": \"14 mmHg\",\r\n    \"tonometriaOi\": \"15 mmHg\",\r\n    \"testColor\": \"Ishihara 15/15\",\r\n    \"fondoOjo\": \"Papila de bordes netos, relación copa disco 0.3\",\r\n    \"diagnostico\": \"Astigmatismo miópico\",\r\n    \"conducta\": \"Se formulan lentes de uso permanente\",\r\n    \"controlSugerido\": \"En 1 año\",\r\n    \"remision\": \"No requiere\",\r\n    \"estado\": 1,\r\n    \"fechaCierre\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/consultas",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "consultas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/consultas",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "consultas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"paciente\": 1,\r\n  \"optometra\": 2,\r\n  \"motivoConsulta\": \"Visión borrosa de lejos - actualizado\",\r\n  \"ultimoControl\": \"Hace 6 meses\",\r\n  \"antecedentes\": \"No refiere antecedentes\",\r\n  \"antecedentesFamiliares\": \"Madre miope\",\r\n  \"examenExterno\": \"Normal\",\r\n  \"tonometriaOd\": \"16\",\r\n  \"tonometriaOi\": \"16\",\r\n  \"testColor\": \"Normal\",\r\n  \"fondoOjo\": \"Normal\",\r\n  \"diagnostico\": \"Miopía simple\",\r\n  \"conducta\": \"Se formula lentes monofocales\",\r\n  \"controlSugerido\": \"1 año\",\r\n  \"remision\": \"\",\r\n  \"estado\": 2,\r\n  \"fechaCierre\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/consultas/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "consultas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cambiar estado",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"idEstado\": 3\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/consultas/1/estado",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "consultas",
+                "1",
+                "estado"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Medicioes",
+      "item": [
+        {
+          "name": "Consultar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/mediciones/consulta/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "mediciones",
+                "consulta",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear medicion",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"idConsulta\": 6,\r\n  \"rxUsoOdEsfera\": -2.25,\r\n  \"rxUsoOdCilindro\": -0.25,\r\n  \"rxUsoOdEje\": 180,\r\n  \"rxUsoOdAvVl\": \"20/40\",\r\n  \"rxUsoOiEsfera\": -2.00,\r\n  \"rxUsoOiCilindro\": -0.25,\r\n  \"rxUsoOiEje\": 175,\r\n  \"rxUsoOiAvVl\": \"20/40\",\r\n  \"vpOd\": \"20/30\",\r\n  \"vpOi\": \"20/30\",\r\n  \"lenteUso\": \"Monofocal\",\r\n  \"kmOd\": \"42.00 / 43.00 x 90\",\r\n  \"kmOdObservaciones\": \"Sin novedad\",\r\n  \"kmOi\": \"42.25 / 43.25 x 85\",\r\n  \"kmOiObservaciones\": \"Sin novedad\",\r\n  \"rxOd\": \"-2.50 -0.50 x 180\",\r\n  \"rxOdObservaciones\": \"Acepta bien\",\r\n  \"rxOi\": \"-2.25 -0.50 x 175\",\r\n  \"rxOiObservaciones\": \"Acepta bien\",\r\n  \"modalidadPpc\": \"Ortoforia\",\r\n  \"modalidadLejos\": \"Ortoforia\",\r\n  \"modalidadCerca\": \"Ortoforia\",\r\n  \"testTitmus\": \"40 seg arco\",\r\n  \"odEsfera\": -2.50,\r\n  \"odCilindro\": -0.50,\r\n  \"odEje\": 180,\r\n  \"odAvVl\": \"20/20\",\r\n  \"oiEsfera\": -2.25,\r\n  \"oiCilindro\": -0.50,\r\n  \"oiEje\": 175,\r\n  \"oiAvVl\": \"20/20\",\r\n  \"adicion\": 0.00,\r\n  \"distanciaPupilar\": \"64 mm\",\r\n  \"idMaterial\": 1,\r\n  \"idTipoLente\": 1,\r\n  \"observacionesRx\": \"Lente CR-39 monofocal\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/mediciones",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "mediciones"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Editar medicion",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"idConsulta\": 6,\r\n  \"rxUsoOdEsfera\": -2.25,\r\n  \"rxUsoOdCilindro\": -0.25,\r\n  \"rxUsoOdEje\": 180,\r\n  \"rxUsoOdAvVl\": \"20/40\",\r\n  \"rxUsoOiEsfera\": -2.00,\r\n  \"rxUsoOiCilindro\": -0.25,\r\n  \"rxUsoOiEje\": 175,\r\n  \"rxUsoOiAvVl\": \"20/40\",\r\n  \"vpOd\": \"20/30\",\r\n  \"vpOi\": \"20/30\",\r\n  \"lenteUso\": \"Monofocal\",\r\n  \"kmOd\": \"42.00 / 43.00 x 90\",\r\n  \"kmOdObservaciones\": \"Sin novedad\",\r\n  \"kmOi\": \"42.25 / 43.25 x 85\",\r\n  \"kmOiObservaciones\": \"Sin novedad\",\r\n  \"rxOd\": \"-2.50 -0.50 x 180\",\r\n  \"rxOdObservaciones\": \"Acepta bien\",\r\n  \"rxOi\": \"-2.25 -0.50 x 175\",\r\n  \"rxOiObservaciones\": \"Acepta bien\",\r\n  \"modalidadPpc\": \"Ortoforia\",\r\n  \"modalidadLejos\": \"Ortoforia\",\r\n  \"modalidadCerca\": \"Ortoforia\",\r\n  \"testTitmus\": \"40 seg arco\",\r\n  \"odEsfera\": -2.50,\r\n  \"odCilindro\": -0.50,\r\n  \"odEje\": 180,\r\n  \"odAvVl\": \"20/20\",\r\n  \"oiEsfera\": -2.25,\r\n  \"oiCilindro\": -0.50,\r\n  \"oiEje\": 175,\r\n  \"oiAvVl\": \"20/20\",\r\n  \"adicion\": 0.00,\r\n  \"distanciaPupilar\": \"64 mm\",\r\n  \"idMaterial\": 1,\r\n  \"idTipoLente\": 1,\r\n  \"observacionesRx\": \"Lente CR-39 monofocal\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/mediciones/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "mediciones",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Acompanantes",
+      "item": [
+        {
+          "name": "Consultar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/acompanantes?idConsulta=3",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "acompanantes"
+              ],
+              "query": [
+                {
+                  "key": "idConsulta",
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear acompanante",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"idConsulta\": 1,\r\n  \"nombre\": \"María Pérez\",\r\n  \"parentesco\": 3,\r\n  \"telefono\": \"3007654321\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/acompanantes",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "acompanantes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"idConsulta\": 3,\r\n  \"nombre\": \"María Pérez Gómez\",\r\n  \"parentesco\": 1,\r\n  \"telefono\": \"3001111111\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/acompanantes/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "acompanantes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar acompanante",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"idConsulta\": 3,\r\n  \"nombre\": \"María Pérez Gómez\",\r\n  \"parentesco\": 1,\r\n  \"telefono\": \"3001111111\"\r\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/acompanantes/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "acompanantes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Adjuntos",
+      "item": [
+        {
+          "name": "Adjuntar archivo",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"idConsulta\": 1,\r\n  \"nombreArchivo\": \"examen_visual_juan.pdf\",\r\n  \"rutaAlmacenamiento\": \"/uploads/consultas/1/examen_visual_juan.pdf\",\r\n  \"tipoContenido\": \"application/pdf\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/adjuntos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "adjuntos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/adjuntos?idConsulta=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "adjuntos"
+              ],
+              "query": [
+                {
+                  "key": "idConsulta",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Editar adjunto",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"idConsulta\": 1,\r\n  \"nombreArchivo\": \"examen_visual_juan_v2.pdf\",\r\n  \"rutaAlmacenamiento\": \"/uploads/consultas/1/examen_visual_juan_v2.pdf\",\r\n  \"tipoContenido\": \"application/pdf\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/adjuntos/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "adjuntos",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar adjunto",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/adjuntos/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "adjuntos",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// 1. Convertir la respuesta a un objeto JSON\r",
+              "const respuesta = pm.response.json();\r",
+              "// Cambia 'token' por el nombre exacto que viene en tu JSON\r",
+              "if (respuesta.token) {\r",
+              "    pm.environment.set(\"mi_token\", respuesta.token);\r",
+              "    console.log(\"Token guardado\");\r",
+              "} else {\r",
+              "    console.log(\"No vino token en la respuesta\");\r",
+              "}\r",
+              "// 2. Extraer el token (ajusta 'token' según el nombre que use tu API)\r",
+              "// const tokenGenerado = respuesta.token; \r",
+              "\r",
+              "// 3. Guardarlo en la variable de entorno\r",
+              "// pm.environment.set(\"mi_token\", tokenGenerado);\r",
+              "\r",
+              "// console.log(\"El token se ha guardado correctamente.\");"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"correoElectronico\": \"dev@startupone.com\",\r\n  \"contrasena\": \"administrador01\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{mi_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}

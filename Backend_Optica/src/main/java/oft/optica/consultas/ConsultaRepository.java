@@ -15,11 +15,13 @@ public interface ConsultaRepository extends JpaRepository<ConsultaEntity, Intege
 
     @Query("""
             SELECT c FROM ConsultaEntity c
+            JOIN FETCH c.paciente
+            JOIN FETCH c.optometra
+            JOIN FETCH c.estado
             WHERE (:idPaciente IS NULL OR c.paciente.id = :idPaciente)
               AND (:idEstado   IS NULL OR c.estado.id   = :idEstado)
-              AND (:desde      IS NULL OR c.fechaConsulta >= :desde)
-              AND (:hasta      IS NULL OR c.fechaConsulta <= :hasta)
-            ORDER BY c.fechaConsulta DESC
+              AND (CAST(:desde AS localdatetime) IS NULL OR c.fechaConsulta >= :desde)
+              AND (CAST(:hasta AS localdatetime) IS NULL OR c.fechaConsulta <= :hasta)
             """)
     Page<ConsultaEntity> buscarConFiltros(
             @Param("idPaciente") Integer idPaciente,

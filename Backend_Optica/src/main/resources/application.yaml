@@ -14,10 +14,12 @@ spring:
   # JPA / HIBERNATE
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-
+    show-sql: false
     hibernate:
       ddl-auto: validate
-    show-sql: false
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+
 
   # CORREO ELECTRÓNICO
   mail:

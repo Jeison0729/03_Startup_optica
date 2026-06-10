@@ -17,6 +17,8 @@ public record ConsultaRequest(
 
         String antecedentes,
 
+        String antecedentesFamiliares,
+
         String examenExterno,
 
         String tonometriaOd,

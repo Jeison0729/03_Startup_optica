@@ -67,10 +67,15 @@ public class AuthService {
             usuario.setFechaUltimoIntento(null);
             usuarioRepository.save(usuario);
 
-            var roles = usuario.getUsuarioRoles().stream()
-                    .map(ur -> ur.getRol().getNombre())
+            // Códigos para el JWT ("ROLE_DEV")
+            var rolesCodigo = usuario.getUsuarioRoles().stream()
+                    .map(ur -> ur.getRol().getCodigo())
                     .toList();
 
+            // Nombres para la respuesta JSON ("Desarrollador")
+            var rolesNombre = usuario.getUsuarioRoles().stream()
+                    .map(ur -> ur.getRol().getNombre())
+                    .toList();
             logService.registrar(usuario, "usuarios", usuario.getId(),
                     AccionLog.LOGIN_OK,
                     "Login exitoso",
@@ -78,13 +83,13 @@ public class AuthService {
 
             String token = jwtService.generarToken(
                     usuario.getCorreoElectronico(),
-                    roles
+                    rolesCodigo
             );
 
             return Map.of(
                     "token", token,
                     "usuario", usuario.getUsuarioNombre(),
-                    "roles", String.join(",", roles)
+                    "roles", String.join(",", rolesCodigo)
             );
 
         } else {

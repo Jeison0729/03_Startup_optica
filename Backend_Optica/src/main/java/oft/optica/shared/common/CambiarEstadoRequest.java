@@ -6,6 +6,6 @@ public record CambiarEstadoRequest(
 
         @NotNull(message = "El estado es obligatorio")
         Integer idEstado
-        
+
 ) {
 }

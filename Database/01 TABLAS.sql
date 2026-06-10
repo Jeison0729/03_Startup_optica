@@ -5,12 +5,6 @@
 -- Limpia cualquier transacción abortada antes de iniciar
 -- ROLLBACK;
 
--- ==========================================================
--- LIMPIEZA TOTAL (EJECUTAR SI YA HAY DATOS INCORRECTOS)
--- Se omite automáticamente si las tablas aún no existen
--- ==========================================================
-
-
 -- BASE DE DATOS: bd_optica
 
 -- Módulo: Registro de usuarios y credenciales
@@ -38,7 +32,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     correo_electronico    	VARCHAR(128) UNIQUE NOT NULL,
     contrasena            	VARCHAR(255) NOT NULL,
 	id_estado_usuario     	INT NOT NULL DEFAULT 1,
-	intentos_fallidos     	SMALLINT DEFAULT 0,
+	intentos_fallidos     	SMALLINT NOT NULL DEFAULT 0,
     fecha_ultimo_intento  	TIMESTAMP NULL,
     fecha_alta            	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fecha_baja            	TIMESTAMP NULL,
@@ -112,8 +106,34 @@ CREATE TABLE IF NOT EXISTS solicitudes_recuperacion (
     CONSTRAINT fk_solicitud_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE,
 	CONSTRAINT fk_solicitud_estado FOREIGN KEY (id_estado) REFERENCES cat_estados_solicitud_recuperacion(id) ON DELETE RESTRICT
 );
+
+CREATE INDEX idx_solicitudes_usuario ON solicitudes_recuperacion (id_usuario);
 -- ─────────────────────────────────────────────────────────
+
+-- COMPLEMENTO: MÓDULO DE AUDITORÍA
  
+-- TABLA: auditoria_log
+-- ─────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS auditoria_log (
+    id               	SERIAL PRIMARY KEY,
+    tabla_afectada   	VARCHAR(64) NOT NULL,
+    id_registro      	INT NOT NULL,
+    id_usuario			INT NOT NULL,
+	usuario_nombre 		VARCHAR(64) NULL,
+	ip             		VARCHAR(45) NULL,
+    accion            	VARCHAR(64)NOT NULL,
+    detalle          	TEXT,
+    fecha_evento     	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	resultado      		SMALLINT NOT NULL DEFAULT 1,
+    CONSTRAINT fk_auditoria_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+);
+ 
+-- Índices de rendimiento
+CREATE INDEX idx_auditoria_fecha   ON auditoria_log (fecha_evento);
+CREATE INDEX idx_auditoria_usuario ON auditoria_log (id_usuario);
+CREATE INDEX idx_auditoria_accion  ON auditoria_log (accion);
+-- ───────────────────────────────────────────────────────── 
+
 -- MÓDULO: CATÁLOGOS (TABLAS MAESTRAS)
  
 -- TABLA: cat_tipos_documento
@@ -297,6 +317,7 @@ CREATE TABLE IF NOT EXISTS consultas (
 );
 
 CREATE INDEX idx_consultas_paciente_estado ON consultas (id_paciente, id_estado_consulta);
+CREATE INDEX idx_consultas_optometra ON consultas (id_optometra);
 -- ─────────────────────────────────────────────────────────
  
 -- MÓDULO: MEDICIONES TÉCNICAS (DETALLE DE LA RECETA)
@@ -367,7 +388,10 @@ CREATE TABLE IF NOT EXISTS mediciones_optometricas (
     CONSTRAINT fk_med_consulta      FOREIGN KEY (id_consulta)   REFERENCES 		consultas(id) ON DELETE CASCADE,
     CONSTRAINT fk_med_material      FOREIGN KEY (id_material)   REFERENCES 		cat_materiales(id),
     CONSTRAINT fk_med_lente         FOREIGN KEY (id_tipo_lente) REFERENCES 		cat_tipos_lente(id),
-	CONSTRAINT chk_od_esfera_step 	CHECK 		(od_esfera 		IS NULL OR MOD(od_esfera * 100, 25) = 0)
+	CONSTRAINT chk_od_esfera_step   CHECK (od_esfera IS NULL OR MOD(od_esfera * 100, 25) = 0),
+	CONSTRAINT chk_oi_esfera_step   CHECK (oi_esfera IS NULL OR MOD(oi_esfera * 100, 25) = 0),
+	CONSTRAINT chk_od_cilindro_step CHECK (od_cilindro IS NULL OR MOD(od_cilindro * 100, 25) = 0),
+	CONSTRAINT chk_oi_cilindro_step CHECK (oi_cilindro IS NULL OR MOD(oi_cilindro * 100, 25) = 0)
 );
 -- ─────────────────────────────────────────────────────────
  
@@ -401,32 +425,6 @@ CREATE TABLE IF NOT EXISTS archivos_adjuntos (
     fecha_subida         	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_arch_consulta FOREIGN KEY (id_consulta) REFERENCES consultas(id) ON DELETE CASCADE
 );
- 
 CREATE INDEX idx_archivos_consulta ON archivos_adjuntos (id_consulta);
--- ─────────────────────────────────────────────────────────
- 
--- COMPLEMENTO: MÓDULO DE AUDITORÍA
- 
--- TABLA: auditoria_log
--- ─────────────────────────────────────────────────────────
-CREATE TABLE IF NOT EXISTS auditoria_log (
-    id               	SERIAL PRIMARY KEY,
-    tabla_afectada   	VARCHAR(64) NOT NULL,
-    id_registro      	INT NOT NULL,
-    id_usuario			INT NOT NULL,
-	usuario_nombre 		VARCHAR(64) NULL,
-	ip             		VARCHAR(45) NULL,
-    accion            	VARCHAR(64)NOT NULL,
-    detalle          	TEXT,
-    fecha_evento     	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	resultado      		SMALLINT NOT NULL DEFAULT 1,
-    CONSTRAINT fk_auditoria_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
- 
--- Índices de rendimiento
-CREATE INDEX idx_paciente_busqueda ON pacientes (numero_documento, nombre_completo);
-CREATE INDEX idx_consulta_fecha    ON consultas (fecha_consulta);
-CREATE INDEX idx_auditoria_fecha   ON auditoria_log (fecha_evento);
-CREATE INDEX idx_auditoria_usuario ON auditoria_log (id_usuario);
-CREATE INDEX idx_auditoria_accion  ON auditoria_log (accion);
+CREATE INDEX idx_consulta_fecha    ON consultas (fecha_consulta); 
 -- ─────────────────────────────────────────────────────────

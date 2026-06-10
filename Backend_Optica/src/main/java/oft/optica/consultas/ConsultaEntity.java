@@ -36,7 +36,7 @@ public class ConsultaEntity {
     @JoinColumn(name = "id_optometra", nullable = false)
     private UsuarioEntity optometra;
 
-    @Column(name = "fecha_consulta", insertable = false, updatable = false)
+    @Column(name = "fecha_consulta")
     private LocalDateTime fechaConsulta;
 
     // Anamnesis
