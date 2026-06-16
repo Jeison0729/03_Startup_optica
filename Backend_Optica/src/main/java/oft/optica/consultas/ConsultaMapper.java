@@ -13,6 +13,7 @@ public class ConsultaMapper {
     public ConsultaResponse toDTO(ConsultaEntity consulta) {
         return new ConsultaResponse(
                 consulta.getId(),
+                consulta.getPaciente().getId(),
                 consulta.getPaciente().getNombreCompleto(),
                 consulta.getOptometra().getUsuarioNombre(),
                 consulta.getFechaConsulta(),

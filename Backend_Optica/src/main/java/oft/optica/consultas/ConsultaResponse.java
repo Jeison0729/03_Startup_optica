@@ -6,6 +6,8 @@ public record ConsultaResponse(
 
         Integer id,
 
+        Integer idPaciente,
+
         String paciente,
 
         String optometra,

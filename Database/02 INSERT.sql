@@ -2,7 +2,7 @@
 -- INSERTS DE PRUEBA: PACIENTES
 -- ==========================================================
 
--- PACIENTE 1: Juan Pérez Gómez
+-- PACIENTE 1: Juan Perez Gómez
 -- ─────────────────────────────────────────────────────────
 INSERT INTO pacientes (
     id_tipo_documento, numero_documento, nombre_completo,
@@ -32,7 +32,7 @@ INSERT INTO pacientes (
 );
 -- ─────────────────────────────────────────────────────────
 
--- PACIENTE 3: Carlos Martínez Suárez
+-- PACIENTE 3: Carlos Martinez Suárez
 -- ─────────────────────────────────────────────────────────
 INSERT INTO pacientes (
     id_tipo_documento, numero_documento, nombre_completo,
@@ -56,7 +56,7 @@ INSERT INTO pacientes (
 -- ==========================================================
 
 -- ─────────────────────────────────────────────────────────
--- PACIENTE 1 - Consulta 1 (15/01/2024 - Miopía simple)
+-- PACIENTE 1 - Consulta 1 (15/01/2024 - Miopia simple)
 -- ─────────────────────────────────────────────────────────
 WITH c1 AS (
     INSERT INTO consultas (

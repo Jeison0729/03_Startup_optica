@@ -7,13 +7,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
 
 @Tag(name = "Autenticación", description = "Login y recuperación de acceso")
 @RestController
@@ -30,9 +27,9 @@ public class AuthController {
             @ApiResponse(responseCode = "423", description = "Cuenta bloqueada")
     })
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> login(
-            @Valid @RequestBody LoginRequest request,
-            HttpServletRequest httpRequest) {
-        return ResponseEntity.ok(authService.login(request, httpRequest.getRemoteAddr()));
+    public LoginResponse login(@Valid @RequestBody LoginRequest request,
+                               HttpServletRequest httpRequest) {
+        String ip = httpRequest.getRemoteAddr();
+        return authService.login(request, ip);
     }
 }

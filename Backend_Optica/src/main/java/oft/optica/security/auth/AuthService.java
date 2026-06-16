@@ -14,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +27,8 @@ public class AuthService {
 
     private static final int MAX_INTENTOS = 3;
 
-    public Map<String, String> login(LoginRequest request, String ip) {
+    public LoginResponse login(LoginRequest request, String ip) {
+
 
         // 1. Buscar por correo
         UsuarioEntity usuario = usuarioRepository
@@ -86,12 +86,12 @@ public class AuthService {
                     rolesCodigo
             );
 
-            return Map.of(
-                    "token", token,
-                    "usuario", usuario.getUsuarioNombre(),
-                    "roles", String.join(",", rolesCodigo)
+            return new LoginResponse(
+                    usuario.getId(),
+                    token,
+                    usuario.getUsuarioNombre(),
+                    String.join(",", rolesCodigo)
             );
-
         } else {
 
             byte intentos = (byte) (usuario.getIntentosFallidos() + 1);

@@ -39,17 +39,12 @@ public class LogAuditoriaServiceImpl implements LogAuditoriaService {
     @Override
     @Transactional(readOnly = true)
     public Page<LogAuditoriaResponse> listarConFiltros(
-            String tablaAfectada,
-            Integer registro,
-            Integer idUsuario,
-            String accion,
-            Byte resultado,
-            LocalDateTime desde,
-            LocalDateTime hasta,
-            Pageable pageable) {
-        return repository.buscarConFiltros(
-                        tablaAfectada, registro, idUsuario,
-                        accion, resultado, desde, hasta, pageable)
+            String tablaAfectada, Integer registro, Integer idUsuario,
+            String accion, Byte resultado, LocalDateTime desde, LocalDateTime hasta, Pageable pageable) {
+
+        return repository.findAll(
+                        LogAuditoriaSpecification.conFiltros(tablaAfectada, registro, idUsuario, accion, resultado, desde, hasta),
+                        pageable)
                 .map(mapper::toDTO);
     }
 }
