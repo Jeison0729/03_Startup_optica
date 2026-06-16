@@ -1,0 +1,29 @@
+/* ═══════════════════════════════════════════════════════
+   IMPORTS GLOBALES - Todos los estilos de la aplicación
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── VARIABLES Y TEMAS ─── */
+@import "./theme/_variables.css";
+
+/* ─── COMPONENTES BASE ─── */
+@import "./theme/_cards.css";
+@import "./theme/_tables.css";
+@import "./theme/_badges.css";
+@import "./theme/_buttons.css";
+@import "./theme/_forms.css";
+@import "./theme/_modals.css";
+@import "./theme/_filters.css";
+@import "./theme/_spinner.css";
+@import "./theme/_misc.css";
+
+/* ─── LAYOUT ─── */
+@import "./layout-styles/_content.css";
+@import "./layout-styles/_navbar.css";
+@import "./layout-styles/_sidebar.css";
+@import "./layout-styles/_footer.css";
+@import "./layout-styles/_responsive.css";
+@import "./layout-styles/_utilities.css";
+
+/* ─── ESTILOS DE VISTAS ─── */
+@import "./styles/login.css";
+@import "./styles/recuperar.css";

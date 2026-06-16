@@ -1,0 +1,327 @@
+/* LAYOUT PRINCIPAL */
+.recuperar-wrapper {
+  min-height: 100vh;
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(26, 43, 73, 0.9) 0%,
+      rgba(15, 23, 42, 0.95) 100%
+    ),
+    url("../assets/images/login-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.recuperar-box {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  position: relative;
+  animation: fadeSlideUp 0.5s ease-out;
+}
+
+/* ENCABEZADO */
+.recuperar-header {
+  margin-bottom: 28px;
+}
+
+.recuperar-title {
+  color: #1a2b49;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+}
+
+.recuperar-subtitle {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* CAMPOS */
+.recuperar-field {
+  margin-bottom: 20px;
+}
+
+.recuperar-label {
+  display: block;
+  color: #2c3e50;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.recuperar-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #2c3e50;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.recuperar-input:focus {
+  border-color: #00d2c4;
+  box-shadow: 0 0 0 3px rgba(0, 210, 196, 0.15);
+}
+
+/* Grupo contraseña con botón ojo */
+.recuperar-input-group {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.recuperar-input-group:focus-within {
+  border-color: #00d2c4;
+  box-shadow: 0 0 0 3px rgba(0, 210, 196, 0.15);
+}
+
+.recuperar-input-group .recuperar-input {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  flex: 1;
+}
+
+.recuperar-input-group .recuperar-input:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.recuperar-eye-btn {
+  background: none;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #64748b;
+}
+
+.recuperar-eye-btn:hover {
+  color: #1a2b49;
+}
+
+/* BOTÓN PRINCIPAL */
+.recuperar-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #1a2b49;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.25s,
+    transform 0.1s,
+    color 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.recuperar-btn:hover:not(:disabled) {
+  background-color: #00d2c4;
+  color: #1a2b49;
+  transform: translateY(-1px);
+}
+
+.recuperar-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Spinner */
+.recuperar-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ENLACES */
+.recuperar-link {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.recuperar-link a {
+  color: #00b3a6;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.recuperar-link a:hover {
+  text-decoration: underline;
+  color: #1a2b49;
+}
+
+.recuperar-back {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.recuperar-back a {
+  color: #64748b;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.recuperar-back a:hover {
+  color: #00d2c4;
+}
+
+/* MODALES (OVERLAYS) */
+.form-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 43, 73, 0.15);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  z-index: 10;
+}
+
+.form-overlay * {
+  pointer-events: auto;
+}
+
+.form-modal {
+  background: white;
+  border-radius: 14px;
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(26, 43, 73, 0.15);
+  max-width: 280px;
+  width: 90%;
+}
+
+/* Bordes superiores según tipo */
+.form-modal.error {
+  border-top: 4px solid #ff4757;
+}
+
+.form-modal.success {
+  border-top: 4px solid #10b981;
+}
+
+.form-modal-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.form-modal-msg {
+  color: #2c3e50;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.form-modal-sub {
+  color: #64748b;
+  font-size: 0.8rem;
+  margin-bottom: 16px;
+}
+
+.form-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Botones del modal */
+.form-modal-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.error-btn {
+  background-color: #1a2b49;
+  color: white;
+}
+
+.error-btn:hover {
+  background-color: #111e35;
+}
+
+.success-btn {
+  background-color: #10b981;
+  color: white;
+}
+
+.success-btn:hover {
+  background-color: #059669;
+}
+
+.secondary-btn {
+  background-color: #f8fafc;
+  color: #1a2b49;
+  border: 1px solid #e2e8f0;
+}
+
+.secondary-btn:hover {
+  background-color: #e2e8f0;
+}
+
+/* FOOTER */
+.recuperar-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+/* ANIMACIONES */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
