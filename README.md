@@ -215,9 +215,9 @@ Acciones registradas: login, bloqueos, CRUD de usuarios, pacientes, consultas, s
 
 | Módulo | Backend | Frontend |
 |--------|--------|--------|
-| Autenticación JWT | ✅ Completo | ⏳ En desarrollo |
+| Autenticación JWT | ✅ Completo | ✅ Completo |
 | Usuarios y Roles | ✅ Completo | ⏳ En desarrollo |
-| Recuperación de contraseña | ✅ Completo | ⏳ En desarrollo |
+| Recuperación de contraseña | ✅ Completo | ✅ Completo |
 | Catálogos | ✅ Completo | ⏳ En desarrollo |
 | Pacientes | ✅ Completo | ⏳ En desarrollo |
 | Consultas | ✅ Completo | ⏳ En desarrollo |
