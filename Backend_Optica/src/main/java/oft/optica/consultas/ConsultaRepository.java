@@ -29,4 +29,8 @@ public interface ConsultaRepository extends JpaRepository<ConsultaEntity, Intege
             @Param("desde") LocalDateTime desde,
             @Param("hasta") LocalDateTime hasta,
             Pageable pageable);
+
+    long countByEstadoCodigo(String codigo);
+
+    long countByFechaConsultaBetween(LocalDateTime inicio, LocalDateTime fin);
 }

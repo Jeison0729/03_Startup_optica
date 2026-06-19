@@ -31,4 +31,6 @@ public interface LogAuditoriaRepository extends JpaRepository<LogAuditoriaEntity
             @Param("desde") LocalDateTime desde,
             @Param("hasta") LocalDateTime hasta,
             Pageable pageable);
+
+    long countByFechaEventoBetween(LocalDateTime inicio, LocalDateTime fin);
 }

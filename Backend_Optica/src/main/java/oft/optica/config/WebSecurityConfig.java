@@ -95,7 +95,8 @@ public class WebSecurityConfig {
 
                         // ── AUDITORÍA ─────────────────────────────────────────
                         .requestMatchers(HttpMethod.GET, "/api/logs/**").hasAuthority("ROLE_DEV")
-
+                        .requestMatchers(HttpMethod.GET, "/api/dashboard/**")
+                        .hasAnyAuthority("ROLE_DEV", "ROLE_ADMIN")
                         // ── RESTO ─────────────────────────────────────────────
                         .anyRequest().authenticated())
 

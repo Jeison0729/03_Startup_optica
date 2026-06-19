@@ -20,4 +20,6 @@ public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Integer>
     Optional<UsuarioEntity> findByCorreoElectronico(String correoElectronico);
 
     Optional<UsuarioEntity> findByUsuarioNombre(String usuarioNombre);
+
+    long countByEstadoUsuarioCodigo(String codigo);
 }

@@ -54,4 +54,6 @@ public interface SolicitudRepository extends JpaRepository<SolicitudEntity, Inte
             """)
     List<SolicitudEntity> findCodigosActivosPorUsuario(
             @Param("idUsuario") Integer idUsuario);
+
+    long countByEstadoSolicitudCodigo(String codigo);
 }
