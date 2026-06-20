@@ -1,0 +1,150 @@
+/*    FILTROS (GESTIÓN) - Unificado con estándar login  */
+
+/* BARRA DE FILTROS - Contenedor principal de búsqueda y filtros */
+.filtros-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  background: white;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* LADO IZQUIERDO - Agrupa inputs y selects de filtros */
+.filtros-izquierda {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+/* Input con ícono wrapper (como login-input-group) - Contenedor con ícono de búsqueda */
+.filtros-input-wrapper {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--border-light);
+  border-radius: 10px;
+  overflow: hidden;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  background: white;
+}
+
+.filtros-input-wrapper:focus-within {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
+}
+
+/* Ícono de búsqueda dentro del input */
+.filtros-input-icon {
+  padding: 0 12px;
+  color: var(--text-muted);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Input de búsqueda - Mismo estándar que login */
+.filtros-input {
+  border: none;
+  border-radius: 0;
+  padding: 11px 14px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  outline: none;
+  background: white;
+  flex: 1;
+  min-width: 200px;
+}
+
+.filtros-input:focus {
+  border: none;
+  box-shadow: none;
+}
+
+/* Selects desplegables - Mismo estándar que login */
+.filtros-select {
+  padding: 11px 32px 11px 14px;
+  border: 1.5px solid var(--border-light);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  outline: none;
+  cursor: pointer;
+  background: white;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  box-sizing: border-box;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.filtros-select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
+}
+
+/* Botón limpiar - Mismo estándar que login-error-btn */
+.filtros-btn-limpiar {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.25s,
+    transform 0.1s;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filtros-btn-limpiar:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+/* Contador de resultados - Muestra cantidad de registros encontrados */
+.filtros-contador {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--bg-crema);
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+/* Responsive - Ajustes para móviles */
+@media (max-width: 768px) {
+  .filtros-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filtros-izquierda {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filtros-input {
+    min-width: auto;
+  }
+}

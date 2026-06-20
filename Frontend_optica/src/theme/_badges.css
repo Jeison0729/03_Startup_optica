@@ -1,0 +1,55 @@
+/*   BADGES (GESTIÓN) - Etiquetas visuales de estado/rol */
+
+/* BADGE BASE - Etiqueta visual con borde redondeado para mostrar estados o roles */
+.gestion-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Badge para estado ACTIVO o operación exitosa */
+.gestion-badge.activo,
+.gestion-badge.success {
+  background-color: rgba(var(--success-rgb), 0.1);
+  color: var(--success-color);
+}
+
+/* Badge para estado BLOQUEADO o acción peligrosa */
+.gestion-badge.bloqueado,
+.gestion-badge.danger {
+  background-color: rgba(var(--danger-rgb), 0.1);
+  color: var(--danger-color);
+}
+
+/* Badge para mostrar ROL de usuario */
+.gestion-badge.rol {
+  background-color: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary-color);
+}
+
+/* Badge para advertencias */
+.gestion-badge.warning {
+  background-color: rgba(var(--warning-rgb), 0.1);
+  color: var(--warning-color);
+}
+
+/* Badge para información general */
+.gestion-badge.info {
+  background-color: rgba(var(--info-rgb), 0.1);
+  color: var(--info-color);
+}
+
+/* Badge secundario (sin color especial) */
+.gestion-badge.secondary {
+  background-color: #e2e8f0;
+  color: #475569;
+}
+
+/* Badge de notificaciones */
+.notificacion-badge {
+  font-size: 0.65rem;
+  padding: 0.25rem 0.5rem;
+}

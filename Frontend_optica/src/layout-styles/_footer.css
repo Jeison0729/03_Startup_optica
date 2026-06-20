@@ -1,0 +1,11 @@
+/* FOOTER - Pie de página de la aplicación */
+.app-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-top: 1px solid #e2e8f0;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  background-color: #ffffff;
+}

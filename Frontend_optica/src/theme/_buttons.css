@@ -1,0 +1,247 @@
+/*V BOTONES (GESTIÓN) - Acciones principales */
+
+/* --- BOTONES CABECERA - Botones principales de acción en la cabecera --- */
+.gestion-btn-actualizar,
+.gestion-btn-editar-inline,
+.gestion-btn-nuevo {
+  height: 38px;
+  padding: 0 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition-hover);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+/* Botón Actualizar - Estilo outline con borde cyan */
+.gestion-btn-actualizar,
+.gestion-btn-editar-inline {
+  background: white;
+  border: 1.5px solid var(--accent-color);
+  color: var(--accent-hover);
+}
+
+.gestion-btn-actualizar:hover,
+.gestion-btn-editar-inline:hover {
+  background-color: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+/* Botón Nuevo - Estilo sólido primary */
+.gestion-btn-nuevo {
+  background-color: var(--primary-color);
+  border: 1.5px solid var(--primary-color);
+  color: white;
+}
+
+.gestion-btn-nuevo:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+/* --- BOTONES DE ACCIÓN (íconos circulares) --- */
+.gestion-acciones {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Botón acción base - Circular con ícono */
+.gestion-btn {
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Botón primario (editar/ver) - Color cyan */
+.gestion-btn.primary {
+  color: var(--accent-hover);
+}
+
+.gestion-btn.primary:hover {
+  background: rgba(var(--accent-rgb), 0.1);
+  transform: scale(1.05);
+}
+
+/* Botón peligro (eliminar/bloquear) - Color rojo */
+.gestion-btn.danger {
+  color: var(--danger-color);
+}
+
+.gestion-btn.danger:hover {
+  background: rgba(var(--danger-rgb), 0.1);
+  transform: scale(1.05);
+}
+
+/* Botón éxito (aprobar/activar) - Color verde */
+.gestion-btn.success {
+  color: var(--success-color);
+}
+
+.gestion-btn.success:hover {
+  background: rgba(var(--success-rgb), 0.1);
+  transform: scale(1.05);
+}
+
+/* Botón advertencia (reenviar/alertar) - Color amarillo */
+.gestion-btn.warning {
+  color: var(--warning-color);
+}
+
+.gestion-btn.warning:hover {
+  background: rgba(var(--warning-rgb), 0.1);
+  transform: scale(1.05);
+}
+
+/* --- BOTONES DE MODAL - Botones dentro de ventanas emergentes --- */
+.gestion-modal-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-hover);
+  width: 100%;
+}
+
+/* Botón error - Fondo rojo para acciones destructivas */
+.error-btn {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.error-btn:hover {
+  background-color: var(--danger-dark);
+  transform: translateY(-1px);
+}
+
+/* Botón éxito - Fondo verde para acciones positivas */
+.success-btn {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.success-btn:hover {
+  background-color: var(--success-dark);
+  transform: translateY(-1px);
+}
+
+/* Botón secundario - Fondo claro para acciones neutrales */
+.secondary-btn {
+  background-color: var(--bg-hover);
+  color: var(--primary-color);
+  border: 1px solid var(--border-light);
+}
+
+.secondary-btn:hover {
+  background-color: #e2e8f0;
+  transform: translateY(-1px);
+}
+
+/* Botón Guardar - Gradiente primario para formularios */
+.btn-guardar-estetico {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--primary-dark)
+  );
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-hover);
+}
+
+.btn-guardar-estetico:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+/* Botón Cancelar - Estilo outline para cerrar */
+.btn-cancelar-estetico {
+  background: white;
+  color: var(--text-muted);
+  border: 1px solid var(--border-light);
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-hover);
+}
+
+.btn-cancelar-estetico:hover {
+  color: var(--danger-color);
+  border-color: var(--danger-color);
+  transform: translateY(-1px);
+}
+
+/* Botón limpio tipo link (para dashboard) */
+.btn-link-clean {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0;
+  transition: color var(--transition-fast);
+}
+
+.btn-link-clean:hover {
+  text-decoration: underline;
+}
+
+/* ─── BOTONES DE FILTRO (píldoras) ─── */
+.filtros-botones {
+  display: flex;
+  gap: 4px;
+  background-color: #f1f5f9;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.btn-filtro {
+  padding: 6px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  color: #64748b;
+}
+
+.btn-filtro:hover {
+  color: #1a2b49;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-filtro.activo {
+  background-color: white;
+  color: #1a2b49;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.btn-filtro.activo:hover {
+  background-color: white;
+}

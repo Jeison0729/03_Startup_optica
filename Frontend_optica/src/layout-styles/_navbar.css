@@ -1,0 +1,73 @@
+/* NAVBAR - Barra de navegación superior */
+.main-navbar {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  flex-shrink: 0;
+}
+
+.btn-toggle {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.brand-text {
+  color: var(--primary-color);
+  font-weight: 800;
+  border-left: 2px dashed var(--accent-color);
+  padding-left: 10px;
+}
+
+.brand-text .fw-light {
+  color: var(--primary-color);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.welcome-text {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.user-name {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.btn-logout-custom {
+  background-color: transparent;
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-logout-custom:hover {
+  background-color: #ff4757;
+  color: #ffffff;
+  border-color: #ff4757;
+}
+
+.divider-vertical {
+  width: 1px;
+  height: 30px;
+  background-color: var(--text-muted);
+  opacity: 0.3;
+}

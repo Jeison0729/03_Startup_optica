@@ -1,0 +1,64 @@
+/* RESPONSIVE - Ajustes para móviles y tablets */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+  }
+  .sidebar .sidebar-logo-text,
+  .sidebar .link-text {
+    display: none;
+  }
+  .sidebar .sidebar-link {
+    justify-content: center;
+    padding: 15px 0;
+  }
+  .sidebar .icon-min {
+    font-size: 24px;
+  }
+  .main-page-content {
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 60px;
+  }
+  .main-navbar {
+    padding: 8px 0;
+  }
+  .brand-text {
+    font-size: 0.85rem;
+  }
+  .user-name,
+  .welcome-text {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grafica-card {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .detalle-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detalle-item {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .detalle-item span {
+    text-align: left;
+  }
+}
+
+/* ─── ARCHIVOS RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .archivos-grid {
+    grid-template-columns: 1fr;
+  }
+}

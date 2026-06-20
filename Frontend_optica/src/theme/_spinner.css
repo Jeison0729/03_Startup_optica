@@ -1,0 +1,44 @@
+/*   SPINNER - Indicador de carga */
+
+/* CONTENEDOR DEL SPINNER */
+.gestion-spinner-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0;
+}
+
+/* SPINNER ANIMADO - Círculo giratorio */
+.gestion-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-light);
+  border-top-color: var(--accent-color);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* TEXTO DEL SPINNER */
+.gestion-spinner-text {
+  color: var(--text-muted);
+  margin-top: 12px;
+  font-size: 0.875rem;
+}
+
+/* ANIMACIÓN DE GIRO */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ─── SPIN ANIMATION ─── */
+.spin {
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,246 @@
+/* MISCELÁNEOS Y ESTRUCTURAS (GESTIÓN)  */
+
+/* ─── LAYOUT PRINCIPAL - Contenedor de páginas de gestión ─── */
+.gestion-wrapper {
+  padding: 0 24px 28px 24px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── CABECERA DE GESTIÓN - Título y acciones ─── */
+.gestion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 11;
+  padding: 12px 0 16px 0;
+  background-color: #f8fafc;
+}
+
+.gestion-header-fijo {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+}
+
+.gestion-contenido-scroll {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* ─── ACCIONES DE CABECERA - Botones agrupados ─── */
+.header-actions,
+.gestion-header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ─── TÍTULO Y SUBTÍTULO ─── */
+.gestion-title {
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 0 4px 0;
+}
+
+.gestion-subtitle {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* ─── SELECTS GENERALES - Selectores unificados ─── */
+.gestion-select {
+  border: 1.5px solid var(--border-light);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.gestion-select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
+}
+
+/* ─── PAGINACIÓN - Controles de navegación entre páginas ─── */
+.gestion-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* ─── BOTONES DE PÁGINA - Botones anterior/siguiente ─── */
+.gestion-pagina-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 600;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+}
+
+.gestion-pagina-btn:hover:not(:disabled) {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.gestion-pagina-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ─── INFORMACIÓN DE PÁGINA - Texto "Página X de Y" ─── */
+.gestion-pagina-info {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ─── ESTADO VACÍO - Mensaje cuando no hay datos ─── */
+.gestion-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 0;
+  font-size: 0.9rem;
+}
+
+/* ─── CÓDIGOS DE ACCESO (TOKENS) - Mostrar códigos generados ─── */
+.gestion-codigo-box {
+  background: var(--bg-crema);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1px dashed var(--border-light);
+}
+
+.gestion-codigo-label {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+}
+
+.gestion-codigo {
+  color: var(--success-color);
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 6px;
+  margin: 0;
+}
+
+.gestion-codigo-aviso {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  margin-top: 6px;
+}
+
+/* ─── TOGGLE DE VISIBILIDAD DE CÓDIGO ─── */
+.gestion-codigo-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gestion-btn-ojo {
+  background: none;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+}
+
+.gestion-btn-ojo:hover {
+  color: var(--primary-color);
+  background-color: var(--bg-hover);
+  transform: scale(1.05);
+}
+
+/* ─── LINKS GENERALES ─── */
+.text-cyan {
+  color: var(--accent-hover) !important;
+  font-weight: 600;
+  transition: color var(--transition-fast);
+}
+
+.text-cyan:hover {
+  color: var(--primary-color) !important;
+  text-decoration: underline;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* ─── RESPONSIVE - Ajustes para móviles ─── */
+@media (max-width: 768px) {
+  .gestion-wrapper {
+    padding: 16px 12px;
+    max-width: 100%;
+  }
+  .gestion-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scrollbar personalizado para actividades */
+.actividades-scroll {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.actividades-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.actividades-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 2px;
+}
+
+.actividades-scroll::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 2px;
+}
+
+.actividades-scroll::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}

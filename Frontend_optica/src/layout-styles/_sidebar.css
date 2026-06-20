@@ -1,0 +1,126 @@
+/* SIDEBAR - Menú lateral de navegación */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 70%, #1a2b49 100%);
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1000;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar-logo-text {
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 1;
+  max-width: 200px;
+  transition:
+    opacity 0.2s ease,
+    max-width 0.3s ease;
+}
+
+.sidebar.collapsed .sidebar-logo-text {
+  opacity: 0;
+  max-width: 0;
+}
+
+.sidebar-header {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  height: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-links-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 25px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+  color: var(--accent-color);
+  background-color: rgba(0, 210, 196, 0.1);
+  border-left: 3px solid var(--accent-color);
+}
+
+.link-text {
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 1;
+  max-width: 200px;
+  transition:
+    opacity 0.2s ease,
+    max-width 0.3s ease;
+}
+
+.sidebar.collapsed .link-text {
+  opacity: 0;
+  max-width: 0;
+}
+
+.sub-link {
+  padding-left: 50px !important;
+  font-size: 0.85rem;
+}
+
+.sidebar.collapsed .sub-link {
+  display: none !important;
+}
+
+.submenu-arrow {
+  margin-left: auto;
+  transition: transform 0.2s ease;
+  font-size: 0.75rem;
+}
+
+.submenu-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.btn-toggle-white {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.icon-min {
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+}

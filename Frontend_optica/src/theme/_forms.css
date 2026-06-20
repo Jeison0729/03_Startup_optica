@@ -1,0 +1,131 @@
+/*  FORMULARIOS (GESTIÓN MODAL) */
+
+/* MODAL DE FORMULARIO - Ventana emergente para formularios */
+.gestion-modal.form-modal {
+  background: white;
+  border-top: 5px solid var(--primary-color);
+  border-radius: 16px;
+  padding: 25px 35px;
+  width: 90%;
+  max-width: 850px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-md);
+  margin: auto;
+  text-align: left;
+}
+
+/* TÍTULO DEL FORMULARIO */
+.form-modal-title {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+/* SUBTÍTULO DEL FORMULARIO */
+.form-modal-sub {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+/* GRID DEL FORMULARIO - Distribución en 3 columnas */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px 18px;
+}
+
+/* SECCIÓN DEL FORMULARIO - Ocupa todo el ancho */
+.form-section-h4 {
+  grid-column: 1 / -1;
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-light);
+  margin: 15px 0 5px 0;
+  padding-bottom: 4px;
+}
+
+/* CAMPO DEL FORMULARIO */
+.form-field {
+  margin-bottom: 12px;
+}
+
+.form-field.col-span-2 {
+  grid-column: span 2;
+}
+
+.form-field.col-span-3 {
+  grid-column: 1 / -1;
+}
+
+/* ETIQUETA DEL CAMPO */
+.form-label {
+  display: block;
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* INPUT Y SELECT - Estilos unificados */
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  outline: none;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(0, 210, 196, 0.1);
+}
+
+/* GRUPO DE INPUT CON BOTÓN (ej: contraseña con ojo) */
+.form-input-group {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.form-input-group .form-input {
+  border: none;
+  border-radius: 0;
+  flex: 1;
+}
+
+/* BOTÓN DE OJO PARA CONTRASEÑA */
+.form-eye-btn {
+  background: none;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+/* MENSAJE DE ERROR DEL FORMULARIO */
+.form-error {
+  color: var(--danger-color);
+  font-size: 0.8rem;
+  margin-top: 8px;
+}
+
+/* ACCIONES DEL FORMULARIO (botones guardar/cancelar) */
+.form-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 25px;
+}
