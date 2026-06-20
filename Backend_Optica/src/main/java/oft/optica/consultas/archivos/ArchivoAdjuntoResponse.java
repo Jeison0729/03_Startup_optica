@@ -6,7 +6,7 @@ public record ArchivoAdjuntoResponse(
 
         Integer id,
 
-        Integer idCnsulta,
+        Integer idConsulta,
 
         String nombreArchivo,
 

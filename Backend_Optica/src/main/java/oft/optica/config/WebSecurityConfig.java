@@ -50,6 +50,10 @@ public class WebSecurityConfig {
                         .requestMatchers(HttpMethod.PATCH, "/api/solicitudes/*/aprobar").hasAnyAuthority("ROLE_DEV", "ROLE_ADMIN")
                         .requestMatchers(HttpMethod.PATCH, "/api/solicitudes/*/reenviar").hasAnyAuthority("ROLE_DEV", "ROLE_ADMIN")
 
+                        // ── DASHBOARD ─────────────────────────────────
+                        .requestMatchers(HttpMethod.GET, "/api/dashboard/**")
+                        .hasAnyAuthority("ROLE_DEV", "ROLE_ADMIN")
+
                         // ── USUARIOS ─────────────────────────────────────────
                         .requestMatchers(HttpMethod.GET, "/api/usuarios/**").hasAnyAuthority("ROLE_DEV", "ROLE_ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/usuarios").hasAuthority("ROLE_DEV")
@@ -95,8 +99,6 @@ public class WebSecurityConfig {
 
                         // ── AUDITORÍA ─────────────────────────────────────────
                         .requestMatchers(HttpMethod.GET, "/api/logs/**").hasAuthority("ROLE_DEV")
-                        .requestMatchers(HttpMethod.GET, "/api/dashboard/**")
-                        .hasAnyAuthority("ROLE_DEV", "ROLE_ADMIN")
                         // ── RESTO ─────────────────────────────────────────────
                         .anyRequest().authenticated())
 

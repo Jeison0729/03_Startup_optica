@@ -33,7 +33,8 @@ public class ConsultaMapper {
                 consulta.getEstado().getCodigo(),
                 consulta.getFechaCierre(),
                 consulta.getMedicion() != null ? consulta.getMedicion().getId() : null,
-                0);
+                consulta.getArchivoAdjuntos() != null ? consulta.getArchivoAdjuntos().size() : 0);
+
     }
 
     public ConsultaEntity toEntity(ConsultaRequest dto,

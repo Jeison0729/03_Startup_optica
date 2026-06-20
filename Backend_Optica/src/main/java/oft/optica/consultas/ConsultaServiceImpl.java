@@ -3,7 +3,11 @@ package oft.optica.consultas;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import oft.optica.auditorias.AccionLog;
+import oft.optica.consultas.historia.HistoriaClinicaMapper;
+import oft.optica.consultas.historia.HistoriaClinicaResponse;
 import oft.optica.exception.RecursoNoEncontradoException;
+import oft.optica.pacientes.PacienteEntity;
+import oft.optica.pacientes.PacienteRepository;
 import oft.optica.shared.auditoria.AuditoriaHelper;
 import oft.optica.shared.common.CambiarEstadoRequest;
 import org.springframework.data.domain.Page;
@@ -12,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +28,9 @@ public class ConsultaServiceImpl implements ConsultaService {
     private final ConsultaMapper consultaMapper;
     private final ConsultaHelper consultaHelper;
     private final AuditoriaHelper auditoriaHelper;
+    private final PacienteRepository pacienteRepository;
+    private final HistoriaClinicaMapper historiaClinicaMapper;
+
 
     @Override
     @Transactional
@@ -116,6 +124,20 @@ public class ConsultaServiceImpl implements ConsultaService {
 
         return consultaMapper.toDTO(actualizada);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public HistoriaClinicaResponse obtenerHistoriaClinica(Integer idPaciente) {
+
+        PacienteEntity paciente = pacienteRepository.findById(idPaciente)
+                .orElseThrow(() -> new RecursoNoEncontradoException(
+                        "Paciente no encontrado con id: " + idPaciente));
+
+        List<ConsultaEntity> consultas = consultaRepository.buscarHistorialPorPaciente(idPaciente);
+
+        return historiaClinicaMapper.toDTO(paciente, consultas);
+    }
+
 
     // ── Interno ──────────────────────────────────────────────────────────────
     private ConsultaEntity obtenerOFallar(Integer id) {

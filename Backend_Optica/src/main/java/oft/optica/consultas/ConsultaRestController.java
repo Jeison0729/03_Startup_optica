@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import oft.optica.consultas.historia.HistoriaClinicaResponse;
 import oft.optica.shared.common.CambiarEstadoRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -101,5 +102,17 @@ public class ConsultaRestController {
             @Valid @RequestBody CambiarEstadoRequest request,
             HttpServletRequest http) {
         return ResponseEntity.ok(consultaService.cambiarEstado(id, request, http));
+    }
+
+    // GET /api/consultas/historial/{idPaciente}
+    @Operation(summary = "Obtener historia clínica completa de un paciente")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Historia clínica encontrada"),
+            @ApiResponse(responseCode = "404", description = "Paciente no encontrado")
+    })
+    @GetMapping("/historial/{idPaciente}")
+    public ResponseEntity<HistoriaClinicaResponse> obtenerHistoriaClinica(
+            @PathVariable Integer idPaciente) {
+        return ResponseEntity.ok(consultaService.obtenerHistoriaClinica(idPaciente));
     }
 }

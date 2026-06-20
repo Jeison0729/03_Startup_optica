@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Repository
@@ -29,6 +30,20 @@ public interface ConsultaRepository extends JpaRepository<ConsultaEntity, Intege
             @Param("desde") LocalDateTime desde,
             @Param("hasta") LocalDateTime hasta,
             Pageable pageable);
+
+    @Query("""
+            SELECT consulta FROM ConsultaEntity consulta
+            JOIN FETCH consulta.paciente paciente
+            JOIN FETCH consulta.optometra optometra
+            JOIN FETCH consulta.estado estado
+            LEFT JOIN FETCH consulta.medicion medicion
+            LEFT JOIN FETCH medicion.material material
+            LEFT JOIN FETCH medicion.tipoLente tipoLente
+            LEFT JOIN FETCH consulta.archivoAdjuntos archivos
+            WHERE paciente.id = :idPaciente
+            ORDER BY consulta.fechaConsulta DESC
+            """)
+    List<ConsultaEntity> buscarHistorialPorPaciente(@Param("idPaciente") Integer idPaciente);
 
     long countByEstadoCodigo(String codigo);
 
