@@ -1,76 +1,121 @@
-/*   VARIABLES GLOBALES */
+/* VARIABLES - Configuración global de colores, tipografía, espaciados y efectos visuales */
 
-/* ─── VARIABLES CSS (ROOT) - Define toda la paleta de colores y diseño ─── */
 :root {
-  /* ─── PALETA BASE: CRISTAL Y PUREZA - Fondos y superficies ─── */
+  /* 1. PALETA BASE: CRISTAL Y PUREZA */
   --bg-crema: #f4f7f6;
   --bg-surface: #ffffff;
   --bg-hover: #f8fafc;
+  /* Colores de fondo principal, superficies y estados hover */
 
-  /* ─── IDENTIDAD DE MARCA (Óptica de Precisión) - Colores principales ─── */
+  /* 2. IDENTIDAD DE MARCA */
   --primary-color: #1a2b49;
   --primary-dark: #111e35;
   --primary-rgb: 26, 43, 73;
-
   --accent-color: #00d2c4;
   --accent-hover: #00b3a6;
   --accent-rgb: 0, 210, 196;
+  /* Colores principales de la marca y sus variantes en formato RGB para transparencias */
 
-  /* ─── COLORES DE ESTADO - Éxito, peligro, advertencia, info ─── */
+  /* 3. COLORES DE ESTADO */
   --success-color: #10b981;
-  --success-dark: #0e9f6e;
+  --success-dark: #059669;
   --success-rgb: 16, 185, 129;
-
   --danger-color: #ff4757;
   --danger-dark: #e03e4d;
   --danger-rgb: 255, 71, 87;
-
   --warning-color: #ffa502;
   --warning-dark: #e59400;
   --warning-rgb: 255, 165, 2;
-
   --info-color: #00a8ff;
   --info-dark: #0094e0;
   --info-rgb: 0, 168, 255;
+  /* Colores para estados: éxito, peligro, advertencia e información, con sus versiones oscuras y RGB */
 
-  /* ─── TEXTOS Y NEUTROS - Tipografía y bordes ─── */
+  /* 4. TEXTOS Y TIPOGRAFÍA */
   --text-main: #2c3e50;
   --text-muted: #64748b;
   --border-light: #e2e8f0;
+  --font-family:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --fs-body: 14px;
+  --fs-h1: 1.85rem;
+  --fs-h2: 1.5rem;
+  --fs-h3: 1.25rem;
+  --fs-h4: 1.1rem;
+  --fs-sm: 0.85rem;
+  --fs-xs: 0.75rem;
+  --fs-navbar-user: 12px;
+  --fs-brand: 22px;
+  /* Configuración de fuentes: colores de texto, familia tipográfica y tamaños para títulos y elementos */
 
-  /* ─── DISEÑO DE INTERFAZ - Bordes redondeados ─── */
+  /* 5. DISEÑO DE INTERFAZ Y LAYOUT */
   --radius-md: 12px;
   --radius-lg: 20px;
+  --radius-form: 10px;
+  --radius-badge: 20px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --border-table: 1px solid var(--border-light);
+  --breakpoint-md: 768px;
+  --breakpoint-sm: 480px;
+  /* Bordes redondeados, espaciados, bordes de tabla y puntos de quiebre responsive */
 
-  /* MEJORADO: Transiciones estilo login/recuperar - Velocidades de animación ─── */
+  /* 6. TRANSICIONES */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.25s ease;
   --transition-hover: background-color 0.25s, transform 0.1s, color 0.25s;
+  --transition-sidebar: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Velocidades de transición para efectos hover, cambios de estado y sidebar */
 
-  /* ─── SOMBRAS - Niveles de profundidad ─── */
+  /* 7. SOMBRAS Y EFECTOS VISUALES */
   --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 10px 15px -3px rgba(26, 43, 73, 0.08);
-  --shadow-lg: 0 8px 32px rgba(26, 43, 73, 0.15);
-
-  /* MEJORADO: Blur para overlays - Filtro de desenfoque ─── */
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.25);
   --blur-overlay: blur(3px);
-}
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+  /* Sombras para distintos niveles de profundidad y efectos de desenfoque para overlays */
 
-/*   ANIMACIÓN DE ENTRADA PARA VISTAS DE GESTIÓN */
+  /* 8. MODALES Y FORMULARIOS */
+  --modal-max-width: 420px;
+  --modal-padding-x: 36px;
+  --modal-padding-y: 40px;
+  --modal-radius: 16px;
+  /* Dimensiones y espaciado para modales modernos */
 
-/* ─── FADE SLIDE UP - Animación de entrada desde abajo ─── */
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+  /* 11. VARIABLES ESPECÍFICAS DE MODAL (ORIGINALES) */
+  --modal-orig-radius: 14px;
+  --modal-orig-padding-y: 28px;
+  --modal-orig-padding-x: 24px;
+  --modal-orig-max-width: 280px;
+  /* Versión original de modales para mantener compatibilidad con estilos previos */
 
-/* ─── APLICACIÓN DE ANIMACIÓN - Se ejecuta al cargar la vista ─── */
-.gestion-wrapper {
-  animation: fadeSlideUp 0.5s ease-out 0.1s backwards;
+  /* 9. BOTONES */
+  --btn-radius-pill: 25px;
+  --btn-radius-default: 10px;
+  --btn-height-default: 38px;
+  --btn-padding-x: 28px;
+  --btn-border-width: 1.5px;
+  --btn-modal-padding-y: 8px;
+  --btn-modal-padding-x: 10px;
+  --btn-modal-font-size: var(--fs-sm);
+  --btn-modal-radius: var(--radius-form);
+  /* Configuración de botones: bordes redondeados, altura, padding, tamaño de fuente y grosor de borde */
+
+  /* 10. SIDEBAR */
+  --sidebar-width: 260px;
+  --sidebar-width-collapsed: 80px;
+  --sidebar-width-mobile: 60px;
+  --sidebar-bg-start: var(--primary-dark);
+  --sidebar-bg-end: var(--primary-color);
+  --sidebar-text: rgba(255, 255, 255, 0.7);
+  --sidebar-hover-bg: rgba(var(--accent-rgb), 0.1);
+  /* Dimensiones, colores y efectos del sidebar en distintos estados y tamaños de pantalla */
+
+  /* 12. FILTROS Y SPINNERS */
+  --filter-radius: 10px;
+  --filter-padding: 11px 14px;
+  --spinner-size: 16px;
+  --spinner-thickness: 2px;
+  /* Configuración de filtros visuales y spinners: bordes redondeados, padding y dimensiones */
 }

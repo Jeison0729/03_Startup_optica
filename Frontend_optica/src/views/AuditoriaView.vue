@@ -94,7 +94,7 @@ watch(
     </div>
 
     <!-- CONTENIDO -->
-    <div v-if="!cargando">
+    <div v-if="!cargando" class="gestion-contenido-scroll">
       <UiFiltros
         placeholder-busqueda="Buscar..."
         :selects="filtrosConfig"

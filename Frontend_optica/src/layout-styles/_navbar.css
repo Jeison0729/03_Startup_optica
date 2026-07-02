@@ -1,15 +1,22 @@
-/* NAVBAR - Barra de navegación superior */
+/* NAVBAR - Barra de navegación superior de la aplicación */
+
+/* 1. BARRA DE NAVEGACIÓN PRINCIPAL */
 .main-navbar {
   background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border-light);
+  backdrop-filter: var(--blur-overlay);
+  padding: 12px 20px;
+  border-bottom: var(--border-table);
   position: sticky;
   top: 0;
   z-index: 999;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+/* Barra de navegación principal: fondo blanco semitransparente, efecto de desenfoque, padding, borde inferior de tabla, sticky en la parte superior con z-index alto, no se encoge, flex con elementos centrados y espacio entre ellos */
 
+/* BOTÓN TOGGLE: Control de apertura/cierre de sidebar */
 .btn-toggle {
   background: none;
   border: none;
@@ -18,52 +25,54 @@
   cursor: pointer;
   padding: 0;
 }
+/* Botón toggle del sidebar: sin fondo ni borde, color primario, tamaño grande, cursor pointer y sin padding */
 
-.brand-text {
-  color: var(--primary-color);
-  font-weight: 800;
-  border-left: 2px dashed var(--accent-color);
-  padding-left: 10px;
-}
-
+/* 2. BRANDING */
 .brand-text .fw-light {
   color: var(--primary-color);
-  font-size: 22px;
+  font-size: var(--fs-brand);
   font-weight: 800;
 }
+/* Texto de la marca: color primario, tamaño definido en variable (22px) y peso extragrueso */
 
+/* 3. USUARIO Y BIENVENIDA */
 .welcome-text {
   color: var(--text-muted);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   font-weight: bold;
   text-transform: uppercase;
 }
+/* Texto de bienvenida: color gris, fuente pequeña, negrita y mayúsculas */
 
 .user-name {
   color: var(--text-muted);
-  font-size: 12px;
+  font-size: var(--fs-navbar-user);
   font-weight: 600;
 }
+/* Nombre del usuario: color gris, tamaño definido en variable (12px) y peso seminegrita */
 
+/* 4. ACCIONES */
 .btn-logout-custom {
   background-color: transparent;
   border: 1px solid var(--text-muted);
   color: var(--text-muted);
   font-weight: bold;
   padding: 6px 16px;
-  border-radius: 10px;
+  border-radius: var(--radius-form);
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: var(--transition-fast);
 }
+/* Botón de cierre de sesión personalizado: fondo transparente, borde gris, texto gris, negrita, padding, bordes redondeados de formulario, flex centrado con gap, cursor pointer y transiciones suaves */
 
 .btn-logout-custom:hover {
-  background-color: #ff4757;
+  background-color: var(--danger-color);
   color: #ffffff;
-  border-color: #ff4757;
+  border-color: var(--danger-color);
 }
+/* Al pasar el mouse: fondo rojo, texto blanco y borde rojo */
 
 .divider-vertical {
   width: 1px;
@@ -71,3 +80,4 @@
   background-color: var(--text-muted);
   opacity: 0.3;
 }
+/* Divisor vertical: línea delgada de 1px, altura 30px, color gris y opacidad reducida al 30% */

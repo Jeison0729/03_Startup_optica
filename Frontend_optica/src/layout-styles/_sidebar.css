@@ -1,7 +1,13 @@
-/* SIDEBAR - Menú lateral de navegación */
+/* SIDEBAR - Menú lateral y lógica de colapso */
+
+/* 1. SIDEBAR PRINCIPAL */
 .sidebar {
-  width: 260px;
-  background: linear-gradient(180deg, #0f172a 0%, #1e293b 70%, #1a2b49 100%);
+  width: var(--sidebar-width);
+  background: linear-gradient(
+    180deg,
+    var(--primary-dark) 0%,
+    var(--primary-color) 100%
+  );
   color: white;
   position: fixed;
   top: 0;
@@ -13,11 +19,14 @@
   display: flex;
   flex-direction: column;
 }
+/* Barra lateral principal: ancho definido por variable (260px), degradado de primario oscuro a primario, texto blanco, posición fija en la esquina superior izquierda, altura completa del viewport, z-index alto, transición suave de ancho, overflow oculto y flex en columna */
 
 .sidebar.collapsed {
-  width: 80px;
+  width: var(--sidebar-width-collapsed);
 }
+/* Cuando el sidebar está colapsado: ancho reducido (80px) */
 
+/* 2. ESTRUCTURA INTERNA */
 .sidebar-logo-text {
   white-space: nowrap;
   overflow: hidden;
@@ -27,11 +36,13 @@
     opacity 0.2s ease,
     max-width 0.3s ease;
 }
+/* Texto del logo: sin salto de línea, overflow oculto, opacidad completa, ancho máximo 200px y transiciones suaves */
 
 .sidebar.collapsed .sidebar-logo-text {
   opacity: 0;
   max-width: 0;
 }
+/* Cuando el sidebar está colapsado: texto del logo invisible y sin ancho */
 
 .sidebar-header {
   background-color: rgba(0, 0, 0, 0.2);
@@ -43,6 +54,7 @@
   align-items: center;
   gap: 16px;
 }
+/* Cabecera del sidebar: fondo negro semitransparente, padding, altura fija 60px, borde inferior blanco semitransparente, no se encoge, flex con alineación centrada y gap */
 
 .nav-links-container {
   flex: 1;
@@ -50,27 +62,31 @@
   flex-direction: column;
   overflow-y: auto;
 }
+/* Contenedor de enlaces de navegación: ocupa espacio flexible, flex en columna y scroll vertical automático */
 
+/* 3. ENLACES Y NAVEGACIÓN */
 .sidebar-link {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 15px 25px;
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
+  color: var(--sidebar-text);
+  text-decoration: none !important;
   transition:
     background-color 0.3s,
     color 0.3s;
   white-space: nowrap;
   overflow: hidden;
 }
+/* Enlace del sidebar: flex con alineación centrada, gap, padding, color de texto definido en variable (blanco semitransparente), sin decoración de texto, transiciones suaves, texto sin salto de línea y overflow oculto */
 
 .sidebar-link:hover,
 .sidebar-link.active {
   color: var(--accent-color);
-  background-color: rgba(0, 210, 196, 0.1);
+  background-color: var(--sidebar-hover-bg);
   border-left: 3px solid var(--accent-color);
 }
+/* Al pasar el mouse o cuando está activo: texto color acento, fondo con transparencia acento y borde izquierdo color acento */
 
 .link-text {
   white-space: nowrap;
@@ -81,30 +97,25 @@
     opacity 0.2s ease,
     max-width 0.3s ease;
 }
+/* Texto del enlace: sin salto de línea, overflow oculto, opacidad completa, ancho máximo 200px y transiciones suaves */
 
 .sidebar.collapsed .link-text {
   opacity: 0;
   max-width: 0;
 }
-
-.sub-link {
-  padding-left: 50px !important;
-  font-size: 0.85rem;
-}
-
-.sidebar.collapsed .sub-link {
-  display: none !important;
-}
+/* Cuando el sidebar está colapsado: texto del enlace invisible y sin ancho */
 
 .submenu-arrow {
   margin-left: auto;
   transition: transform 0.2s ease;
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
 }
+/* Flecha de submenú: margen izquierdo automático para alinearse a la derecha, transición de transformación suave y fuente extra pequeña */
 
 .submenu-arrow.rotated {
   transform: rotate(180deg);
 }
+/* Flecha rotada: giro de 180 grados */
 
 .btn-toggle-white {
   background: none;
@@ -115,6 +126,7 @@
   padding: 0;
   flex-shrink: 0;
 }
+/* Botón toggle blanco: sin fondo ni borde, color blanco, tamaño grande, cursor pointer, sin padding y no se encoge */
 
 .icon-min {
   font-size: 20px;
@@ -124,3 +136,4 @@
   flex-shrink: 0;
   width: 24px;
 }
+/* Ícono mínimo: tamaño 20px, flex inline centrado, no se encoge y ancho fijo de 24px */

@@ -1,8 +1,8 @@
-/* MISCELÁNEOS Y ESTRUCTURAS (GESTIÓN)  */
+/* MISCELÁNEOS Y ESTRUCTURAS - Componentes generales, layout y utilidades diversas */
 
 /* ─── LAYOUT PRINCIPAL - Contenedor de páginas de gestión ─── */
 .gestion-wrapper {
-  padding: 0 24px 28px 24px;
+  padding: 0 var(--spacing-md) var(--spacing-lg) var(--spacing-md);
   max-width: 100%;
   width: 100%;
   box-sizing: border-box;
@@ -10,37 +10,41 @@
   display: flex;
   flex-direction: column;
 }
+/* Contenedor principal de gestión: padding horizontal mediano y vertical grande, ancho completo, box-sizing border-box, posición relativa y flex en columna */
 
 /* ─── CABECERA DE GESTIÓN - Título y acciones ─── */
 .gestion-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: var(--spacing-lg);
   flex-wrap: wrap;
-  gap: 12px;
+  gap: var(--spacing-sm);
   position: sticky;
   top: 0;
   z-index: 11;
-  padding: 12px 0 16px 0;
-  background-color: #f8fafc;
+  padding: 12px 0 var(--spacing-sm) 0;
+  background-color: var(--bg-crema);
 }
+/* Cabecera de gestión: flex con espacio entre elementos, alineación centrada, margen inferior grande, wrap, gap pequeño, sticky en la parte superior con z-index 11, padding y fondo crema */
 
 .gestion-header-fijo {
   flex-shrink: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-md);
   padding-bottom: 10px;
-  border-bottom: 1px solid #e2e8f0;
-  background-color: #f8fafc;
+  border-bottom: var(--border-table);
+  background-color: var(--bg-crema);
 }
+/* Cabecera fija: no se encoge, flex con espacio entre elementos, alineación centrada, margen inferior mediano, padding inferior, borde inferior de tabla y fondo crema */
 
 .gestion-contenido-scroll {
   flex: 1;
   overflow-y: auto;
 }
+/* Contenedor de contenido con scroll: ocupa espacio flexible y scroll vertical automático */
 
 /* ─── ACCIONES DE CABECERA - Botones agrupados ─── */
 .header-actions,
@@ -49,56 +53,62 @@
   gap: 10px;
   align-items: center;
 }
+/* Acciones de cabecera: flex con gap de 10px y alineación centrada */
 
 /* ─── TÍTULO Y SUBTÍTULO ─── */
 .gestion-title {
   color: var(--primary-color);
-  font-size: 1.6rem;
+  font-size: var(--fs-h1);
   font-weight: 800;
   margin: 0 0 4px 0;
 }
+/* Título de gestión: color primario, tamaño h1, peso extragrueso y margen inferior reducido */
 
 .gestion-subtitle {
   color: var(--text-muted);
-  font-size: 0.875rem;
+  font-size: var(--fs-sm);
   margin: 0;
 }
+/* Subtítulo de gestión: color gris, tamaño pequeño y sin margen */
 
 /* ─── SELECTS GENERALES - Selectores unificados ─── */
 .gestion-select {
-  border: 1.5px solid var(--border-light);
-  border-radius: 8px;
+  border: var(--btn-border-width) solid var(--border-light);
+  border-radius: var(--radius-form);
   padding: 6px 10px;
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   color: var(--text-main);
   outline: none;
   cursor: pointer;
-  background-color: white;
+  background-color: var(--bg-surface);
   transition:
     border-color var(--transition-fast),
     box-shadow var(--transition-fast);
 }
+/* Selector general: borde delgado gris, bordes redondeados de formulario, padding reducido, fuente pequeña, texto color principal, sin outline, cursor pointer, fondo blanco y transiciones suaves */
 
 .gestion-select:focus {
   border-color: var(--accent-color);
   box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
 }
+/* Al enfocar: borde color acento y sombra con transparencia acento */
 
 /* ─── PAGINACIÓN - Controles de navegación entre páginas ─── */
 .gestion-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
-  margin-top: 20px;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
 }
+/* Controles de paginación: flex centrado, gap pequeño y margen superior mediano */
 
 /* ─── BOTONES DE PÁGINA - Botones anterior/siguiente ─── */
 .gestion-pagina-btn {
   background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-form);
   width: 36px;
   height: 36px;
   display: inline-flex;
@@ -110,24 +120,28 @@
     background-color 0.2s,
     transform 0.1s;
 }
+/* Botón de página: fondo primario, texto blanco, sin borde, bordes redondeados de formulario, 36x36, flex centrado, cursor pointer, peso seminegrita y transiciones rápidas */
 
 .gestion-pagina-btn:hover:not(:disabled) {
   background-color: var(--accent-color);
   color: var(--primary-color);
   transform: translateY(-1px);
 }
+/* Al pasar el mouse (si no está deshabilitado): fondo color acento, texto primario y ligera elevación */
 
 .gestion-pagina-btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
+/* Cuando está deshabilitado: opacidad reducida y cursor de no permitido */
 
 /* ─── INFORMACIÓN DE PÁGINA - Texto "Página X de Y" ─── */
 .gestion-pagina-info {
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   font-weight: 600;
 }
+/* Información de página: color gris, fuente pequeña y peso seminegrita */
 
 /* ─── ESTADO VACÍO - Mensaje cuando no hay datos ─── */
 .gestion-empty {
@@ -136,21 +150,24 @@
   padding: 40px 0;
   font-size: 0.9rem;
 }
+/* Estado vacío: texto centrado, color gris, padding generoso y tamaño de fuente mediano */
 
 /* ─── CÓDIGOS DE ACCESO (TOKENS) - Mostrar códigos generados ─── */
 .gestion-codigo-box {
   background: var(--bg-crema);
-  border-radius: 10px;
+  border-radius: var(--radius-form);
   padding: 14px;
-  margin-bottom: 16px;
+  margin-bottom: var(--spacing-md);
   border: 1px dashed var(--border-light);
 }
+/* Caja de código: fondo crema, bordes redondeados de formulario, padding, margen inferior mediano y borde punteado gris */
 
 .gestion-codigo-label {
   color: var(--text-muted);
   font-size: 0.8rem;
   margin-bottom: 6px;
 }
+/* Etiqueta del código: color gris, fuente pequeña y margen inferior reducido */
 
 .gestion-codigo {
   color: var(--success-color);
@@ -159,12 +176,14 @@
   letter-spacing: 6px;
   margin: 0;
 }
+/* Código: color éxito, tamaño grande, peso extragrueso, espaciado entre letras amplio y sin margen */
 
 .gestion-codigo-aviso {
   color: var(--text-muted);
   font-size: 0.75rem;
   margin-top: 6px;
 }
+/* Aviso del código: color gris, fuente muy pequeña y margen superior reducido */
 
 /* ─── TOGGLE DE VISIBILIDAD DE CÓDIGO ─── */
 .gestion-codigo-toggle {
@@ -172,6 +191,7 @@
   align-items: center;
   gap: 8px;
 }
+/* Toggle de código: flex con alineación centrada y gap de 8px */
 
 .gestion-btn-ojo {
   background: none;
@@ -183,12 +203,14 @@
   color: var(--text-muted);
   transition: var(--transition-fast);
 }
+/* Botón ojo para mostrar/ocultar: sin fondo, borde gris, bordes redondeados, padding reducido, cursor pointer, fuente pequeña, color gris y transiciones suaves */
 
 .gestion-btn-ojo:hover {
   color: var(--primary-color);
   background-color: var(--bg-hover);
   transform: scale(1.05);
 }
+/* Al pasar el mouse: texto primario, fondo hover y escala sutil */
 
 /* ─── LINKS GENERALES ─── */
 .text-cyan {
@@ -196,15 +218,18 @@
   font-weight: 600;
   transition: color var(--transition-fast);
 }
+/* Texto color cian: color acento oscuro, peso seminegrita y transición de color suave */
 
 .text-cyan:hover {
   color: var(--primary-color) !important;
   text-decoration: underline;
 }
+/* Al pasar el mouse: color primario y subrayado */
 
 .cursor-pointer {
   cursor: pointer;
 }
+/* Utilidad para cursor pointer */
 
 /* ─── RESPONSIVE - Ajustes para móviles ─── */
 @media (max-width: 768px) {
@@ -212,35 +237,54 @@
     padding: 16px 12px;
     max-width: 100%;
   }
+  /* En móviles: padding reducido en wrapper */
+
   .gestion-header {
     flex-direction: column;
     align-items: flex-start;
   }
+  /* En móviles: cabecera en columna y alineada a la izquierda */
+
   .form-grid {
     grid-template-columns: 1fr;
   }
+  /* En móviles: grid de formulario a una sola columna */
 }
+/* Ajustes responsivos para dispositivos con ancho máximo de 768px */
 
 /* Scrollbar personalizado para actividades */
 .actividades-scroll {
   max-height: 350px;
   overflow-y: auto;
 }
+/* Contenedor de actividades con scroll: altura máxima de 350px y scroll vertical automático */
 
 .actividades-scroll::-webkit-scrollbar {
   width: 4px;
 }
+/* Ancho del scrollbar: 4px */
 
 .actividades-scroll::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--bg-hover);
   border-radius: 2px;
 }
+/* Fondo del scrollbar: color hover y bordes redondeados */
 
 .actividades-scroll::-webkit-scrollbar-thumb {
-  background: #d1d5db;
+  background: var(--border-light);
   border-radius: 2px;
 }
+/* Pulgar del scrollbar: color borde claro y bordes redondeados */
 
 .actividades-scroll::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+  background: var(--text-muted);
 }
+/* Pulgar al pasar el mouse: color gris */
+
+/* Estado vacío */
+.actividad-vacia {
+  text-align: center;
+  padding: 30px 20px;
+  color: var(--text-muted, #6b7280);
+}
+/* Estado vacío de actividades: texto centrado, padding y color gris con fallback */

@@ -190,7 +190,7 @@ onMounted(cargar);
     </div>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <div v-if="!cargando">
+    <div v-if="!cargando" class="gestion-contenido-scroll">
       <!-- BARRA DE FILTROS -->
       <UiFiltros
         placeholder-busqueda="Buscar..."

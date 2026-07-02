@@ -1,64 +1,83 @@
-/* RESPONSIVE - Ajustes para móviles y tablets */
-@media (max-width: 768px) {
+/* RESPONSIVO - Ajustes de diseño para móviles y tablets */
+
+/* 1. TABLETS Y MÓVILES (Max-width: 768px) */
+@media (max-width: var(--breakpoint-md)) {
   .sidebar {
-    width: 80px;
+    width: var(--sidebar-width-collapsed);
   }
+  /* Sidebar se reduce al ancho colapsado (80px) */
+
   .sidebar .sidebar-logo-text,
   .sidebar .link-text {
     display: none;
   }
+  /* Oculta el texto del logo y los nombres de los enlaces en el sidebar */
+
   .sidebar .sidebar-link {
     justify-content: center;
-    padding: 15px 0;
+    padding: var(--spacing-md) 0;
   }
+  /* Enlaces del sidebar: centrados y con padding vertical mediano */
+
   .sidebar .icon-min {
     font-size: 24px;
   }
+  /* Íconos del sidebar: tamaño más grande para mejor visibilidad */
+
   .main-page-content {
     padding: 0;
   }
-}
+  /* Contenido principal: sin padding */
 
-@media (max-width: 480px) {
-  .sidebar {
-    width: 60px;
-  }
-  .main-navbar {
-    padding: 8px 0;
-  }
-  .brand-text {
-    font-size: 0.85rem;
-  }
-  .user-name,
-  .welcome-text {
-    font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 768px) {
   .grafica-card {
-    margin-bottom: 16px;
+    margin-bottom: var(--spacing-md);
   }
-}
+  /* Tarjetas de gráfica: margen inferior mediano para separación */
 
-@media (max-width: 768px) {
   .detalle-grid {
     grid-template-columns: 1fr;
   }
+  /* Grid de detalles: una sola columna */
 
   .detalle-item {
     flex-direction: column;
     gap: 2px;
   }
+  /* Items de detalle: en columna con gap mínimo */
 
   .detalle-item span {
     text-align: left;
   }
-}
+  /* Valores de detalle: alineación a la izquierda */
 
-/* ─── ARCHIVOS RESPONSIVE ─── */
-@media (max-width: 768px) {
   .archivos-grid {
     grid-template-columns: 1fr;
   }
+  /* Grid de archivos: una sola columna */
 }
+/* Ajustes responsivos para tablets y móviles con ancho máximo de 768px */
+
+/* 2. MÓVILES PEQUEÑOS (Max-width: 480px) */
+@media (max-width: var(--breakpoint-sm)) {
+  .sidebar {
+    width: var(--sidebar-width-mobile);
+  }
+  /* Sidebar se reduce al ancho móvil (60px) */
+
+  .main-navbar {
+    padding: 8px 0;
+  }
+  /* Navbar: padding vertical reducido */
+
+  .brand-text {
+    font-size: var(--fs-sm);
+  }
+  /* Texto de marca: tamaño pequeño */
+
+  .user-name,
+  .welcome-text {
+    font-size: var(--fs-xs);
+  }
+  /* Nombre de usuario y bienvenida: tamaño extra pequeño */
+}
+/* Ajustes responsivos para móviles pequeños con ancho máximo de 480px */

@@ -65,14 +65,12 @@ onMounted(() => {
       <div>
         <h2 class="gestion-title">
           <i class="bi bi-speedometer2 me-2"></i>
-          Dashboard
+          Asi va tu Día
         </h2>
         <p class="gestion-subtitle">
           Bienvenido,
           <strong>{{ auth?.usuario || "Usuario" }}</strong>
-          <span class="badge bg-primary ms-2">
-            {{ esDev ? "👨‍💻 DEV" : "👤 ADMIN" }}
-          </span>
+          <span class="badge bg-info ms-2"></span>
         </p>
       </div>
       <div class="gestion-header-actions">
@@ -146,7 +144,7 @@ onMounted(() => {
               >
                 <strong>
                   <i class="bi bi-bar-chart me-1"></i>
-                  Consultas Finalizadas
+                  Consultas Ok
                 </strong>
                 <span class="badge bg-light text-dark">
                   <i class="bi bi-info-circle"></i>

@@ -1,8 +1,6 @@
-/* ═══════════════════════════════════════════════════════
-   CARDS Y KPIS - Tarjetas de métricas y dashboard
-   ═══════════════════════════════════════════════════════ */
+/* CARDS Y KPIS - Tarjetas de presentación para dashboard, métricas y módulos de gestión */
 
-/* ─── TARJETAS DE MÓDULOS (selección de secciones) - Tarjeta para acceder a módulos ─── */
+/* 1. TARJETAS DE MÓDULOS */
 .module-card {
   border: 2px solid var(--border-light);
   border-radius: var(--radius-lg);
@@ -14,6 +12,7 @@
   cursor: pointer;
   max-width: 280px;
 }
+/* Tarjeta base para módulos: borde gris, bordes redondeados grandes, fondo blanco, sombra suave, transiciones suaves, cursor pointer y ancho máximo fijo */
 
 .module-card:hover {
   transform: translateY(-10px);
@@ -21,31 +20,58 @@
   border-color: var(--primary-color);
   background-color: rgba(var(--primary-rgb), 0.02);
 }
+/* Al pasar el mouse: elevación pronunciada, sombra media, borde color primario y fondo con leve transparencia primaria */
 
-/* ─── TARJETAS KPI (métricas numéricas) - Tarjeta para mostrar indicadores clave ─── */
+/* 2. TARJETAS KPI (MÉTRICAS NUMÉRICAS) */
+.kpi-card-wrapper {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+/* Contenedor envolvente para KPI: posición relativa, z-index base, cursor pointer y transiciones suaves */
+
+.kpi-card-wrapper:hover {
+  z-index: 2;
+  transform: translateY(-4px);
+}
+/* Al pasar el mouse: eleva el z-index y desplaza hacia arriba ligeramente */
+
+.kpi-card-wrapper:active {
+  transform: translateY(0);
+}
+/* Al hacer clic: vuelve a su posición original */
+
 .kpi-panel-card {
   border-radius: var(--radius-md);
   border: 1px solid var(--border-light);
+  border-left-width: 4px;
+  border-left-style: solid;
   transition:
-    transform 0.2s var(--transition-fast),
-    box-shadow 0.2s var(--transition-fast);
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
+/* Tarjeta KPI: bordes redondeados medios, borde gris, borde izquierdo más grueso (para color de estado), transiciones suaves */
 
 .kpi-panel-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
+/* Al pasar el mouse: ligera elevación y sombra media */
 
-/* ─── ICONOS Y NÚMEROS - Estilos para íconos y números de métricas ─── */
+/* 3. ELEMENTOS INTERNOS DE TARJETAS (ICONOS Y TEXTOS) */
 .icon-shape {
   width: 80px;
   height: 80px;
-  border-radius: 20px;
-  margin-bottom: 10px;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-sm);
   display: flex;
   align-items: center;
   justify-content: center;
 }
+/* Contenedor cuadrado para íconos: 80x80, bordes redondeados grandes, flex centrado y margen inferior */
 
 .icon {
   font-size: 3rem;
@@ -54,6 +80,7 @@
   font-style: normal;
   line-height: 1;
 }
+/* Estilo base para íconos: tamaño grande, bloque, color heredado, sin cursiva y altura de línea normal */
 
 .kpi-icon-box {
   display: flex;
@@ -63,177 +90,29 @@
   width: 44px;
   line-height: 0;
 }
+/* Caja contenedora de íconos KPI: 44x44, flex centrado y sin altura de línea */
 
 .stat-number {
   font-size: 2.2rem;
   font-weight: 900;
   color: var(--primary-color);
-  margin: 4px 0 0 0;
+  margin: var(--spacing-sm) 0 0 0;
   line-height: 1;
 }
+/* Número de estadística: tamaño grande, peso extragrueso, color primario, margen superior y línea normal */
 
 .stat-number.stat-alert {
   color: var(--danger-color);
 }
+/* Variante de alerta para números de estadística: color rojo */
 
 .stat-label {
   color: var(--text-muted);
-  font-size: 0.8rem;
-  margin: 4px 0 0 0;
+  font-size: var(--fs-xs);
+  margin: var(--spacing-sm) 0 0 0;
 }
+/* Etiqueta de estadística: color gris, tamaño extra pequeño y margen superior */
 
-/* ─── BORDES DE COLOR PARA KPIS - Borde izquierdo de color según categoría ─── */
-.border-primary {
-  border-left-color: var(--accent-color) !important;
-}
-.border-success {
-  border-left-color: var(--success-color) !important;
-}
-.border-warning {
-  border-left-color: var(--warning-color) !important;
-}
-.border-danger {
-  border-left-color: var(--danger-color) !important;
-}
-
-/* ─── TEXTOS PARA KPIS - Colores específicos para números KPI ─── */
-.text-kpi-primary {
-  color: var(--primary-color) !important;
-}
-.text-kpi-success {
-  color: var(--success-color) !important;
-}
-.text-kpi-warning {
-  color: var(--warning-color) !important;
-}
-.text-kpi-danger {
-  color: var(--danger-color) !important;
-}
-
-/* ─── BACKGROUNDS TRASLÚCIDOS - Fondos con opacidad para iconos KPI ─── */
-.bg-soft-primary {
-  background-color: rgba(var(--accent-rgb), 0.1) !important;
-}
-.bg-soft-success {
-  background-color: rgba(var(--success-rgb), 0.1) !important;
-}
-.bg-soft-warning {
-  background-color: rgba(var(--warning-rgb), 0.1) !important;
-}
-.bg-soft-danger {
-  background-color: rgba(var(--danger-rgb), 0.1) !important;
-}
-.bg-soft-blue {
-  background-color: rgba(var(--info-rgb), 0.1);
-  color: var(--info-color);
-}
-.bg-soft-orange {
-  background-color: rgba(var(--warning-rgb), 0.1);
-  color: var(--warning-color);
-}
-.bg-soft-cyan {
-  background-color: rgba(var(--accent-rgb), 0.1);
-  color: var(--accent-hover);
-}
-
-/* ─── LAYOUT DASHBOARD - Contenedores del dashboard ─── */
-.dashboard-container {
-  min-height: 85vh;
-}
-
-.dashboard-kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
-}
-
-.dashboard-block {
-  border: 1px solid var(--border-light);
-}
-
-.custom-progress {
-  background-color: var(--border-light);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-/* ─── VACIOS - Estado cuando no hay datos ─── */
-.empleado-empty {
-  text-align: center;
-  padding: 60px 20px;
-  color: var(--text-muted);
-}
-
-.empleado-empty-icon {
-  font-size: 4rem;
-  margin-bottom: 16px;
-}
-
-.empleado-empty-title {
-  color: var(--primary-color);
-  font-weight: 700;
-  font-size: 1.2rem;
-  margin-bottom: 8px;
-}
-
-.empleado-empty-sub {
-  font-size: 0.875rem;
-}
-
-/* ─── AJUSTES RESPONSIVE - Ajustes para tablets y móviles ─── */
-@media (max-width: 768px) {
-  .icon-shape {
-    width: 64px;
-    height: 64px;
-  }
-  .icon {
-    font-size: 2.2rem;
-  }
-  .stat-number {
-    font-size: 1.8rem;
-  }
-  .module-card {
-    max-width: 100%;
-  }
-  .dashboard-kpi-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
-}
-
-/* ─── KPI CARD WRAPPER - Contenedor con efecto hover ─── */
-.kpi-card-wrapper {
-  position: relative;
-  z-index: 1;
-  cursor: pointer;
-  transition:
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast);
-}
-
-.kpi-card-wrapper:hover {
-  z-index: 2;
-  transform: translateY(-4px);
-}
-
-.kpi-card-wrapper:active {
-  transform: translateY(0);
-}
-
-/* ─── KPI PANEL CARD BASE - Estilo base con borde izquierdo ─── */
-.kpi-panel-card {
-  border-left-width: 4px !important;
-  border-left-style: solid !important;
-  border-radius: var(--radius-md);
-  transition:
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast);
-}
-
-.kpi-panel-card:hover {
-  box-shadow: var(--shadow-md);
-}
-
-/* ─── ETIQUETA DE SECCIÓN - Títulos de grupos de KPIs ─── */
 .gestion-section-label {
   font-size: 0.78rem;
   font-weight: 700;
@@ -242,90 +121,232 @@
   color: var(--text-muted);
   margin-bottom: 10px;
 }
+/* Etiqueta de sección: tamaño pequeño, negrita, mayúsculas, espaciado entre letras, color gris y margen inferior */
+
+/* 4. UTILIDADES DE COLOR (BORDES, TEXTOS Y FONDOS) */
+/* Bordes */
+.border-primary {
+  border-left-color: var(--accent-color) !important;
+}
+/* Borde izquierdo color acento */
+
+.border-success {
+  border-left-color: var(--success-color) !important;
+}
+/* Borde izquierdo color éxito */
+
+.border-warning {
+  border-left-color: var(--warning-color) !important;
+}
+/* Borde izquierdo color advertencia */
+
+.border-danger {
+  border-left-color: var(--danger-color) !important;
+}
+/* Borde izquierdo color peligro */
+
+/* Textos KPI */
+.text-kpi-primary {
+  color: var(--primary-color) !important;
+}
+/* Texto color primario para KPI */
+
+.text-kpi-success {
+  color: var(--success-color) !important;
+}
+/* Texto color éxito para KPI */
+
+.text-kpi-warning {
+  color: var(--warning-color) !important;
+}
+/* Texto color advertencia para KPI */
+
+.text-kpi-danger {
+  color: var(--danger-color) !important;
+}
+/* Texto color peligro para KPI */
+
+/* Backgrounds traslúcidos */
+.bg-soft-primary {
+  background-color: rgba(var(--accent-rgb), 0.1) !important;
+}
+/* Fondo suave color acento (10% opacidad) */
+
+.bg-soft-success {
+  background-color: rgba(var(--success-rgb), 0.1) !important;
+}
+/* Fondo suave color éxito (10% opacidad) */
+
+.bg-soft-warning {
+  background-color: rgba(var(--warning-rgb), 0.1) !important;
+}
+/* Fondo suave color advertencia (10% opacidad) */
+
+.bg-soft-danger {
+  background-color: rgba(var(--danger-rgb), 0.1) !important;
+}
+/* Fondo suave color peligro (10% opacidad) */
+
+.bg-soft-blue {
+  background-color: rgba(var(--info-rgb), 0.1);
+  color: var(--info-color);
+}
+/* Fondo suave azul con texto color información */
+
+.bg-soft-orange {
+  background-color: rgba(var(--warning-rgb), 0.1);
+  color: var(--warning-color);
+}
+/* Fondo suave naranja con texto color advertencia */
+
+.bg-soft-cyan {
+  background-color: rgba(var(--accent-rgb), 0.1);
+  color: var(--accent-hover);
+}
+/* Fondo suave cian con texto color acento oscuro */
+
+/* 5. DASHBOARD, GRÁFICAS Y RESÚMENES */
+.dashboard-block {
+  border: 1px solid var(--border-light);
+}
+/* Bloque base para dashboard: borde gris */
+
+.custom-progress {
+  background-color: var(--border-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+/* Barra de progreso personalizada: fondo gris, bordes redondeados y overflow oculto */
 
 .grafica-card {
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-  background-color: white;
+  border-radius: var(--radius-form);
+  border: 1px solid var(--border-light);
+  background-color: var(--bg-surface);
 }
+/* Tarjeta para gráficas: bordes redondeados de formulario, borde gris y fondo blanco */
 
 .grafica-header {
   padding: 12px 20px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: var(--border-table);
 }
+/* Cabecera de gráfica: padding y borde inferior de tabla */
 
 .grafica-body {
   padding: 20px;
 }
-
-.historia-paciente-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  border: 1px solid #e2e8f0;
-}
-
-.historia-paciente-card p {
-  margin-bottom: 0;
-}
+/* Cuerpo de gráfica: padding interno */
 
 .resumen-card {
   padding: 16px 20px;
-  border-radius: 10px;
+  border-radius: var(--radius-form);
   text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border-light);
 }
+/* Tarjeta de resumen: padding, bordes redondeados de formulario, texto centrado y borde gris */
 
 .resumen-numero {
   display: block;
   font-size: 2rem;
   font-weight: 800;
-  color: #1a2b49;
+  color: var(--primary-color);
 }
+/* Número de resumen: bloque, tamaño grande, peso extragrueso y color primario */
 
 .resumen-label {
-  font-size: 0.8rem;
-  color: #64748b;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+/* Etiqueta de resumen: tamaño extra pequeño, color gris, negrita, mayúsculas y espaciado entre letras */
+
+/* 6. HISTORIA Y CONSULTAS */
+.historia-paciente-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+}
+/* Tarjeta de historia del paciente: fondo blanco, bordes redondeados medios, padding, sombra suave y borde gris */
+
+.historia-paciente-card p {
+  margin-bottom: 0;
+}
+/* Elimina el margen inferior de los párrafos dentro de la tarjeta */
 
 .historia-consulta-item {
-  background: white;
-  border-radius: 10px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-form);
   padding: 16px 20px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-light);
   transition: all 0.2s ease;
 }
+/* Item de consulta: fondo blanco, bordes redondeados de formulario, padding, borde gris y transición suave */
 
 .historia-consulta-item:hover {
-  border-color: #2b5e9f;
-  box-shadow: 0 4px 12px rgba(43, 94, 159, 0.08);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-md);
 }
+/* Al pasar el mouse: borde color primario y sombra media */
 
 .consulta-header {
   cursor: pointer;
 }
+/* Cabecera de consulta: cursor pointer para indicar interactividad */
 
 .consulta-header:hover .badge {
   filter: brightness(0.95);
 }
+/* Al pasar sobre la cabecera: reduce ligeramente el brillo de las badges internas */
 
 .consulta-detalle {
-  background-color: #f8fafc;
+  background-color: var(--bg-hover);
   border-radius: 8px;
   padding: 16px;
 }
+/* Detalle de consulta: fondo hover, bordes redondeados y padding */
 
-/* ─── ARCHIVOS ─── */
+.detalle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 16px;
+}
+/* Grid de detalles: dos columnas iguales con gap en filas y columnas */
+
+.detalle-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: var(--border-table);
+}
+/* Item de detalle: flex con espacio entre elementos, padding y borde inferior de tabla */
+
+.detalle-item label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+/* Etiqueta de detalle: tamaño extra pequeño, negrita, color gris, mayúsculas y espaciado entre letras */
+
+.detalle-item span {
+  font-size: var(--fs-sm);
+  color: var(--text-main);
+  text-align: right;
+}
+/* Valor de detalle: tamaño pequeño, color de texto principal y alineación derecha */
+
+/* 7. ARCHIVOS Y ACTIVIDAD */
 .archivos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 10px;
   margin-top: 10px;
 }
+/* Grid de archivos: columnas responsivas de mínimo 200px, gap y margen superior */
 
 .archivo-item {
   display: flex;
@@ -338,6 +359,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
+/* Item de archivo: flex con alineación centrada, gap, padding, fondo blanco, bordes redondeados, borde gris, cursor pointer y transición suave */
 
 .archivo-item:hover {
   border-color: var(--accent-color);
@@ -345,11 +367,13 @@
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
+/* Al pasar el mouse: borde color acento, fondo hover, elevación y sombra media */
 
 .archivo-item i:first-child {
   font-size: 1.5rem;
   color: var(--primary-color);
 }
+/* Primer ícono del archivo: tamaño mediano y color primario */
 
 .archivo-nombre {
   flex: 1;
@@ -360,11 +384,13 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/* Nombre del archivo: ocupa espacio flexible, tamaño pequeño, peso medio, color principal, texto truncado con elipsis y sin salto de línea */
 
 .archivo-tamanio {
   font-size: 0.7rem;
   color: var(--text-muted);
 }
+/* Tamaño del archivo: fuente muy pequeña y color gris */
 
 .archivo-download {
   color: var(--primary-color);
@@ -372,7 +398,70 @@
   opacity: 0.6;
   transition: opacity 0.2s;
 }
+/* Ícono de descarga: color primario, tamaño normal, opacidad reducida y transición suave */
 
 .archivo-item:hover .archivo-download {
   opacity: 1;
 }
+/* Al pasar sobre el item: la descarga se vuelve totalmente visible */
+
+.actividad-item {
+  padding: 10px 15px;
+  border-bottom: 1px solid #f3f4f6;
+}
+.actividad-item:last-child {
+  border-bottom: none;
+}
+/* Item de actividad: padding y borde inferior gris claro. El último item no tiene borde */
+
+/* 8. ESTADOS VACÍOS */
+.empleado-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+/* Estado vacío de empleados: texto centrado, padding generoso y color gris */
+
+.empleado-empty-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+/* Ícono de estado vacío: tamaño muy grande y margen inferior */
+
+.empleado-empty-title {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+/* Título de estado vacío: color primario, negrita, tamaño mediano y margen inferior */
+
+.empleado-empty-sub {
+  font-size: 0.875rem;
+}
+/* Subtítulo de estado vacío: tamaño pequeño */
+
+/* 9. RESPONSIVE */
+@media (max-width: 768px) {
+  .icon-shape {
+    width: 64px;
+    height: 64px;
+  }
+  /* En pantallas pequeñas: íconos shape más pequeños */
+
+  .icon {
+    font-size: 2.2rem;
+  }
+  /* En pantallas pequeñas: íconos más pequeños */
+
+  .stat-number {
+    font-size: 1.8rem;
+  }
+  /* En pantallas pequeñas: números de estadística más pequeños */
+
+  .module-card {
+    max-width: 100%;
+  }
+  /* En pantallas pequeñas: tarjetas de módulo ocupan todo el ancho disponible */
+}
+/* Ajustes responsivos para dispositivos con ancho máximo de 768px */

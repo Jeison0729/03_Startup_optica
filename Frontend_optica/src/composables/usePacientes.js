@@ -1,5 +1,5 @@
 // DEPENDENCIAS E IMPORTACIONES
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import {
   listarPacientesApi,
   obtenerPacienteApi,
@@ -24,7 +24,41 @@ export function usePacientes() {
   const pagina = ref(0);
   const tamanioPagina = ref(10);
 
+  // FILTROS LOCALES
+  const busquedaTexto = ref("");
+  const filtroEstadoId = ref("");
+
   // FUNCIONES
+  // NORMALIZAR TEXTO
+  function normalizar(texto) {
+    return (
+      texto
+        ?.toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") || ""
+    );
+  }
+
+  //  PACIENTES FILTRADOS EN FRONTEND
+  const pacientesFiltrados = computed(() => {
+    let resultado = [...pacientes.value];
+
+    if (filtroEstadoId.value) {
+      const estadoSeleccionado = null;
+      resultado = resultado.filter((p) => p.estado?.toLowerCase() === "activo");
+    }
+
+    if (busquedaTexto.value.trim()) {
+      const busqueda = normalizar(busquedaTexto.value);
+      resultado = resultado.filter((p) => {
+        const nombre = normalizar(p.nombreCompleto);
+        const documento = normalizar(p.numeroDocumento);
+        return nombre.includes(busqueda) || documento.includes(busqueda);
+      });
+    }
+
+    return resultado;
+  });
 
   // Carga lista de pacientes con filtros
   async function cargarPacientes() {
@@ -112,12 +146,15 @@ export function usePacientes() {
     numeroDocumento.value = "";
     idEstado.value = "";
     pagina.value = 0;
+    busquedaTexto.value = "";
+    filtroEstadoId.value = "";
     cargarPacientes();
   }
 
   // RETORNO
   return {
     pacientes,
+    pacientesFiltrados,
     totalRegistros,
     cargando,
     error,
@@ -127,6 +164,8 @@ export function usePacientes() {
     idEstado,
     pagina,
     tamanioPagina,
+    busquedaTexto,
+    filtroEstadoId,
     cargarPacientes,
     obtenerPaciente,
     crearPaciente,

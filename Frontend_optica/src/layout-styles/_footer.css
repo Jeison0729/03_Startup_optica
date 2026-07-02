@@ -1,11 +1,14 @@
-/* FOOTER - Pie de página de la aplicación */
+/* FOOTERS - Pie de página de la aplicación */
+
+/* CONTENEDOR: Estilos de layout y bordes heredados del sistema */
 .app-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
-  border-top: 1px solid #e2e8f0;
-  color: #94a3b8;
-  font-size: 0.75rem;
-  background-color: #ffffff;
+  border-top: var(--border-table);
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  background-color: var(--bg-surface);
 }
+/* Pie de página de la aplicación: flex con espacio entre elementos, alineación centrada, padding, borde superior de tabla, color gris, fuente extra pequeña y fondo blanco */

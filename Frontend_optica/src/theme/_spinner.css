@@ -1,44 +1,29 @@
-/*   SPINNER - Indicador de carga */
+/* SPINNER - Indicadores de carga visual para procesos asíncronos */
 
-/* CONTENEDOR DEL SPINNER */
+/* CONTENEDOR: Posicionamiento central para carga */
 .gestion-spinner-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 60px 0;
 }
+/* Contenedor del spinner: flex en columna, elementos centrados horizontalmente y padding vertical generoso */
 
-/* SPINNER ANIMADO - Círculo giratorio */
+/* SPINNER: Elemento circular animado */
 .gestion-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid var(--border-light);
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  border: var(--spinner-thickness) solid var(--border-light);
   border-top-color: var(--accent-color);
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
 }
+/* Spinner: tamaño definido por variable (16px), borde delgado color gris claro, borde superior color acento, forma circular y animación de rotación infinita con velocidad constante */
 
-/* TEXTO DEL SPINNER */
+/* ETIQUETA: Texto descriptivo bajo el spinner */
 .gestion-spinner-text {
   color: var(--text-muted);
-  margin-top: 12px;
-  font-size: 0.875rem;
+  margin-top: var(--spacing-sm);
+  font-size: var(--fs-sm);
 }
-
-/* ANIMACIÓN DE GIRO */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* ─── SPIN ANIMATION ─── */
-.spin {
-  animation: spin 0.7s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Texto del spinner: color gris, margen superior pequeño y fuente pequeña */

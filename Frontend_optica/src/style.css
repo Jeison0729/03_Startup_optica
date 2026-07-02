@@ -17,7 +17,7 @@
 @import "./theme/_misc.css";
 
 /* ─── LAYOUT ─── */
-@import "./layout-styles/_content.css";
+@import "./layout-styles/_layout.css";
 @import "./layout-styles/_navbar.css";
 @import "./layout-styles/_sidebar.css";
 @import "./layout-styles/_footer.css";

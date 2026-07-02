@@ -1,109 +1,125 @@
-/*  FORMULARIOS (GESTIÓN MODAL) */
+/* FORMULARIO - Sistema de Formularios para modales y campos de entrada */
 
 /* MODAL DE FORMULARIO - Ventana emergente para formularios */
 .gestion-modal.form-modal {
-  background: white;
-  border-top: 5px solid var(--primary-color);
-  border-radius: 16px;
-  padding: 25px 35px;
+  background: var(--bg-surface);
+  border-top: 2px solid var(--primary-color);
+  border-radius: var(--modal-radius);
+  padding: var(--modal-padding-y) var(--modal-padding-x);
   width: 90%;
   max-width: 850px;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: var(--shadow-md);
   margin: auto;
-  text-align: left;
+  text-align: center;
+  display: block;
 }
+/* Modal de formulario: fondo blanco, borde superior grueso color primario, bordes redondeados modernos, padding definido en variables, ancho 90% con máximo 850px, altura máxima 90% del viewport, scroll vertical, sombra media, centrado automático, texto alineado a la izquierda y bloque */
 
 /* TÍTULO DEL FORMULARIO */
 .form-modal-title {
   color: var(--primary-color);
-  font-size: 1.3rem;
-  font-weight: 800;
-  margin-bottom: 20px;
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
 }
+/* Título del formulario: color primario, tamaño h2, peso extragrueso, margen inferior grande y texto centrado */
 
 /* SUBTÍTULO DEL FORMULARIO */
 .form-modal-sub {
   color: var(--text-muted);
-  font-size: 0.85rem;
-  margin-bottom: 12px;
+  font-size: var(--fs-sm);
+  margin-bottom: var(--spacing-sm);
 }
+/* Subtítulo del formulario: color gris, tamaño pequeño y margen inferior pequeño */
 
 /* GRID DEL FORMULARIO - Distribución en 3 columnas */
 .form-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px 18px;
+  gap: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
 }
+/* Grid del formulario: 3 columnas iguales con gap pequeño en filas y mediano en columnas */
 
 /* SECCIÓN DEL FORMULARIO - Ocupa todo el ancho */
 .form-section-h4 {
   grid-column: 1 / -1;
   color: var(--primary-color);
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   font-weight: 800;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--border-light);
-  margin: 15px 0 5px 0;
+  border-bottom: var(--border-table);
+  margin: var(--spacing-md) 0 var(--spacing-sm) 0;
   padding-bottom: 4px;
 }
+/* Título de sección: ocupa todas las columnas del grid, color primario, fuente pequeña, peso extragrueso, mayúsculas, borde inferior de tabla, márgenes y padding inferior */
 
 /* CAMPO DEL FORMULARIO */
 .form-field {
-  margin-bottom: 12px;
+  margin-bottom: var(--spacing-sm);
 }
+/* Campo individual: margen inferior pequeño */
 
 .form-field.col-span-2 {
   grid-column: span 2;
 }
+/* Campo que ocupa 2 columnas del grid */
 
 .form-field.col-span-3 {
   grid-column: 1 / -1;
 }
+/* Campo que ocupa todas las columnas del grid */
 
 /* ETIQUETA DEL CAMPO */
 .form-label {
   display: block;
   color: var(--primary-color);
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
   font-weight: 700;
   margin-bottom: 4px;
 }
+/* Etiqueta: bloque, color primario, fuente extra pequeña, negrita y margen inferior reducido */
 
 /* INPUT Y SELECT - Estilos unificados */
 .form-input,
 .form-select {
   width: 100%;
   padding: 10px 12px;
-  border: 1.5px solid var(--border-light);
-  border-radius: 8px;
-  font-size: 0.85rem;
+  border: var(--btn-border-width) solid var(--border-light);
+  border-radius: var(--radius-form);
+  font-size: var(--fs-sm);
   outline: none;
   box-sizing: border-box;
-  background-color: white;
+  background-color: var(--bg-surface);
 }
+/* Inputs y selects unificados: ancho completo, padding, borde delgado gris, bordes redondeados de formulario, fuente pequeña, sin outline, box-sizing border-box y fondo blanco */
 
 .form-input:focus,
 .form-select:focus {
   border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(0, 210, 196, 0.1);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1);
 }
+/* Al enfocar: borde color acento y sombra sutil con transparencia acento */
 
 /* GRUPO DE INPUT CON BOTÓN (ej: contraseña con ojo) */
 .form-input-group {
   display: flex;
   align-items: center;
-  border: 1.5px solid var(--border-light);
-  border-radius: 8px;
+  border: var(--btn-border-width) solid var(--border-light);
+  border-radius: var(--radius-form);
   overflow: hidden;
 }
+/* Grupo de input: flex con alineación centrada, borde delgado gris, bordes redondeados de formulario y overflow oculto */
 
 .form-input-group .form-input {
   border: none;
   border-radius: 0;
   flex: 1;
 }
+/* Input dentro del grupo: sin borde, sin bordes redondeados y ocupa espacio flexible */
 
 /* BOTÓN DE OJO PARA CONTRASEÑA */
 .form-eye-btn {
@@ -114,18 +130,41 @@
   font-size: 1.2rem;
   color: var(--text-muted);
 }
+/* Botón para mostrar/ocultar contraseña: sin fondo ni borde, padding horizontal, cursor pointer, tamaño mediano y color gris */
 
 /* MENSAJE DE ERROR DEL FORMULARIO */
 .form-error {
   color: var(--danger-color);
-  font-size: 0.8rem;
-  margin-top: 8px;
+  font-size: var(--fs-xs);
+  margin-top: var(--spacing-sm);
 }
+/* Mensaje de error: color rojo, fuente extra pequeña y margen superior pequeño */
 
 /* ACCIONES DEL FORMULARIO (botones guardar/cancelar) */
 .form-modal-actions {
   display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 25px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  width: 100%;
+}
+/* Acciones del formulario: flex con botones alineados a la derecha, gap mediano, margen superior grande y ancho completo */
+
+.form-modal-actions button {
+  flex: 0 0 auto;
+  width: auto;
+}
+/* Botones en acciones: no se expanden y mantienen su ancho automático */
+
+.form-grid.form-grid-compacto {
+  grid-template-columns: 1fr;
+  max-width: 320px;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+.form-grid.form-grid-compacto .form-field {
+  width: 100%;
 }

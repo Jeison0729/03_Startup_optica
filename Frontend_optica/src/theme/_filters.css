@@ -1,150 +1,118 @@
-/*    FILTROS (GESTIÓN) - Unificado con estándar login  */
+/* FILTROS - Barra de búsqueda y filtrado para listados y tablas */
 
-/* BARRA DE FILTROS - Contenedor principal de búsqueda y filtros */
+/* BARRA DE FILTROS: Contenedor principal sticky */
 .filtros-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-  background: white;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  background: var(--bg-surface);
   padding: 12px 16px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
   z-index: 100;
 }
+/* Barra de filtros: flex con espacio entre elementos, wrap, gap pequeño, margen inferior, fondo blanco, padding, bordes redondeados medios, sombra suave, sticky en la parte superior con z-index alto */
 
-/* LADO IZQUIERDO - Agrupa inputs y selects de filtros */
+/* LADO IZQUIERDO: Agrupa inputs y selects */
 .filtros-izquierda {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-sm);
   flex-wrap: wrap;
   flex: 1;
 }
+/* Lado izquierdo de la barra: flex con alineación centrada, gap pequeño, wrap y ocupa espacio flexible */
 
-/* Input con ícono wrapper (como login-input-group) - Contenedor con ícono de búsqueda */
+/* WRAPPER INPUT: Contenedor para ícono de búsqueda */
 .filtros-input-wrapper {
   flex: 1;
   min-width: 200px;
   display: flex;
   align-items: center;
-  border: 1.5px solid var(--border-light);
-  border-radius: 10px;
+  border: var(--btn-border-width) solid var(--border-light);
+  border-radius: var(--filter-radius);
   overflow: hidden;
   transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
-  background: white;
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+  background: var(--bg-surface);
 }
+/* Contenedor del input: ocupa espacio flexible, ancho mínimo 200px, flex centrado, borde delgado gris, bordes redondeados, overflow oculto, transiciones suaves y fondo blanco */
 
 .filtros-input-wrapper:focus-within {
   border-color: var(--accent-color);
   box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
 }
+/* Cuando el input interno está enfocado: borde color acento y sombra con transparencia acento */
 
-/* Ícono de búsqueda dentro del input */
+/* ÍCONO INPUT: Elemento visual de búsqueda */
 .filtros-input-icon {
   padding: 0 12px;
   color: var(--text-muted);
   font-size: 1rem;
-  display: flex;
-  align-items: center;
 }
+/* Ícono de búsqueda: padding horizontal, color gris y tamaño normal */
 
-/* Input de búsqueda - Mismo estándar que login */
+/* INPUT BÚSQUEDA: Campo de texto limpio */
 .filtros-input {
   border: none;
-  border-radius: 0;
-  padding: 11px 14px;
-  font-size: 0.9rem;
+  padding: var(--filter-padding);
+  font-size: var(--fs-sm);
   color: var(--text-main);
   outline: none;
-  background: white;
+  background: var(--bg-surface);
   flex: 1;
-  min-width: 200px;
 }
+/* Input de búsqueda: sin borde, padding definido en variable, fuente pequeña, texto color principal, sin outline, fondo blanco y ocupa espacio flexible */
 
-.filtros-input:focus {
-  border: none;
-  box-shadow: none;
-}
-
-/* Selects desplegables - Mismo estándar que login */
+/* SELECTS: Menús desplegables estilizados */
 .filtros-select {
   padding: 11px 32px 11px 14px;
-  border: 1.5px solid var(--border-light);
-  border-radius: 10px;
-  font-size: 0.9rem;
+  border: var(--btn-border-width) solid var(--border-light);
+  border-radius: var(--filter-radius);
+  font-size: var(--fs-sm);
   color: var(--text-main);
   outline: none;
   cursor: pointer;
-  background: white;
+  background: var(--bg-surface);
   transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
-  box-sizing: border-box;
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
+  background-image: none;
+  /* Select personalizado: padding con espacio para flecha, borde gris, bordes redondeados, fuente pequeña, texto color principal, cursor pointer, fondo blanco, transiciones y eliminación de estilo nativo */
 }
 
 .filtros-select:focus {
   border-color: var(--accent-color);
   box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
 }
+/* Cuando el select está enfocado: borde color acento y sombra con transparencia acento */
 
-/* Botón limpiar - Mismo estándar que login-error-btn */
+/* BOTÓN LIMPIAR: Acción principal de reinicio */
 .filtros-btn-limpiar {
   background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--filter-radius);
   padding: 11px 20px;
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   font-weight: 600;
   cursor: pointer;
-  transition:
-    background-color 0.25s,
-    transform 0.1s;
-  white-space: nowrap;
+  transition: var(--transition-hover);
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
+/* Botón limpiar filtros: fondo primario, texto blanco, sin borde, bordes redondeados de filtro, padding, fuente pequeña y negrita, cursor pointer, transiciones hover definidas, flex centrado con gap */
 
 .filtros-btn-limpiar:hover {
   background-color: var(--accent-color);
   color: var(--primary-color);
-  transform: translateY(-1px);
 }
-
-/* Contador de resultados - Muestra cantidad de registros encontrados */
-.filtros-contador {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  font-weight: 600;
-  white-space: nowrap;
-  background: var(--bg-crema);
-  padding: 6px 12px;
-  border-radius: 20px;
-}
-
-/* Responsive - Ajustes para móviles */
-@media (max-width: 768px) {
-  .filtros-bar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .filtros-izquierda {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .filtros-input {
-    min-width: auto;
-  }
-}
+/* Al pasar el mouse: fondo color acento y texto color primario (inversión de colores) */

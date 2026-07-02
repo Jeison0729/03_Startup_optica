@@ -1,14 +1,14 @@
-/*V BOTONES (GESTIÓN) - Acciones principales */
+/* BOTONES - Sistema de Botones */
 
-/* --- BOTONES CABECERA - Botones principales de acción en la cabecera --- */
+/* 1. BOTONES CABECERA - Acciones principales */
 .gestion-btn-actualizar,
 .gestion-btn-editar-inline,
 .gestion-btn-nuevo {
-  height: 38px;
-  padding: 0 16px;
-  font-size: 0.85rem;
+  height: var(--btn-height-default);
+  padding: 0 var(--btn-padding-x);
+  font-size: var(--fs-sm);
   font-weight: 600;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: var(--transition-hover);
   display: inline-flex;
@@ -18,45 +18,47 @@
   box-sizing: border-box;
   white-space: nowrap;
 }
+/* Estilo base para botones de cabecera: altura fija, padding horizontal, fuente pequeña y negrita, bordes redondeados, flex centrado con gap */
 
-/* Botón Actualizar - Estilo outline con borde cyan */
 .gestion-btn-actualizar,
 .gestion-btn-editar-inline {
   background: white;
   border: 1.5px solid var(--accent-color);
   color: var(--accent-hover);
 }
+/* Botones de actualizar y editar inline: fondo blanco, borde color acento y texto color acento oscuro */
 
 .gestion-btn-actualizar:hover,
 .gestion-btn-editar-inline:hover {
   background-color: var(--accent-color);
   color: white;
-  border-color: var(--accent-color);
   transform: translateY(-1px);
 }
+/* Al pasar el mouse: fondo color acento, texto blanco y ligero elevación */
 
-/* Botón Nuevo - Estilo sólido primary */
 .gestion-btn-nuevo {
   background-color: var(--primary-color);
   border: 1.5px solid var(--primary-color);
   color: white;
 }
+/* Botón nuevo: fondo y borde color primario, texto blanco */
 
 .gestion-btn-nuevo:hover {
   background-color: var(--primary-dark);
   border-color: var(--primary-dark);
   transform: translateY(-1px);
 }
+/* Al pasar el mouse: fondo y borde color primario oscuro, ligera elevación */
 
-/* --- BOTONES DE ACCIÓN (íconos circulares) --- */
+/* 2. BOTONES DE ACCIÓN (Íconos circulares) */
 .gestion-acciones {
   display: flex;
   gap: 6px;
   align-items: center;
   flex-wrap: wrap;
 }
+/* Contenedor flex para agrupar botones de acción con espaciado y wrap */
 
-/* Botón acción base - Circular con ícono */
 .gestion-btn {
   border: none;
   border-radius: 50%;
@@ -69,83 +71,66 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
 }
+/* Botón circular base: sin borde, redondo de 32px, transparente, flex centrado */
 
-/* Botón primario (editar/ver) - Color cyan */
 .gestion-btn.primary {
   color: var(--accent-hover);
 }
-
 .gestion-btn.primary:hover {
   background: rgba(var(--accent-rgb), 0.1);
   transform: scale(1.05);
 }
+/* Botón primario: color acento oscuro y al hover fondo suave con escala */
 
-/* Botón peligro (eliminar/bloquear) - Color rojo */
 .gestion-btn.danger {
   color: var(--danger-color);
 }
-
 .gestion-btn.danger:hover {
   background: rgba(var(--danger-rgb), 0.1);
   transform: scale(1.05);
 }
+/* Botón peligro: color rojo y al hover fondo rojo suave con escala */
 
-/* Botón éxito (aprobar/activar) - Color verde */
 .gestion-btn.success {
   color: var(--success-color);
 }
-
 .gestion-btn.success:hover {
   background: rgba(var(--success-rgb), 0.1);
   transform: scale(1.05);
 }
+/* Botón éxito: color verde y al hover fondo verde suave con escala */
 
-/* Botón advertencia (reenviar/alertar) - Color amarillo */
 .gestion-btn.warning {
   color: var(--warning-color);
 }
-
 .gestion-btn.warning:hover {
   background: rgba(var(--warning-rgb), 0.1);
   transform: scale(1.05);
 }
+/* Botón advertencia: color amarillo y al hover fondo amarillo suave con escala */
 
-/* --- BOTONES DE MODAL - Botones dentro de ventanas emergentes --- */
-.gestion-modal-btn {
-  border: none;
-  border-radius: 8px;
-  padding: 10px 28px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: var(--transition-hover);
-  width: 100%;
-}
-
-/* Botón error - Fondo rojo para acciones destructivas */
+/* 3. BOTONES DE MODAL Y ESTÉTICOS */
 .error-btn {
   background-color: var(--danger-color);
   color: white;
 }
-
 .error-btn:hover {
   background-color: var(--danger-dark);
   transform: translateY(-1px);
 }
+/* Botón de error: fondo rojo, texto blanco, al hover fondo rojo oscuro y elevación */
 
-/* Botón éxito - Fondo verde para acciones positivas */
 .success-btn {
   background-color: var(--success-color);
   color: white;
 }
-
 .success-btn:hover {
   background-color: var(--success-dark);
   transform: translateY(-1px);
 }
+/* Botón de éxito: fondo verde, texto blanco, al hover fondo verde oscuro y elevación */
 
-/* Botón secundario - Fondo claro para acciones neutrales */
 .secondary-btn {
   background-color: var(--bg-hover);
   color: var(--primary-color);
@@ -153,12 +138,14 @@
 }
 
 .secondary-btn:hover {
-  background-color: #e2e8f0;
+  background-color: var(--border-light);
   transform: translateY(-1px);
 }
+/* Botón secundario: fondo hover, texto primario, borde claro, al hover fondo borde claro y elevación */
 
-/* Botón Guardar - Gradiente primario para formularios */
 .btn-guardar-estetico {
+  width: fit-content;
+  flex: 0 0 auto;
   background: linear-gradient(
     135deg,
     var(--primary-color),
@@ -166,82 +153,78 @@
   );
   color: white;
   border: none;
-  padding: 10px 25px;
-  border-radius: 25px;
-  font-weight: 700;
+  padding: var(--btn-modal-padding-y) var(--btn-modal-padding-x);
+  font-size: var(--btn-modal-font-size);
+  border-radius: var(--btn-radius-pill);
   cursor: pointer;
   transition: var(--transition-hover);
 }
 
 .btn-guardar-estetico:hover {
   transform: translateY(-1px);
-  filter: brightness(1.05);
+  filter: brightness(1.1);
 }
+/* Botón guardar estético: degradado de primario a oscuro, texto blanco, pill, al hover elevación y brillo */
 
-/* Botón Cancelar - Estilo outline para cerrar */
 .btn-cancelar-estetico {
+  width: fit-content;
+  flex: 0 0 auto;
   background: white;
   color: var(--text-muted);
   border: 1px solid var(--border-light);
-  padding: 10px 25px;
-  border-radius: 25px;
-  font-weight: 700;
+  border-radius: var(--btn-radius-pill);
+  padding: var(--btn-modal-padding-y) var(--btn-modal-padding-x);
+  font-size: var(--btn-modal-font-size);
   cursor: pointer;
   transition: var(--transition-hover);
 }
-
 .btn-cancelar-estetico:hover {
   color: var(--danger-color);
   border-color: var(--danger-color);
   transform: translateY(-1px);
 }
+/* Botón cancelar estético: fondo blanco, texto gris, borde claro, al hover texto y borde rojo, elevación */
 
-/* Botón limpio tipo link (para dashboard) */
 .btn-link-clean {
   background: none;
   border: none;
   cursor: pointer;
   font-weight: 600;
-  padding: 0;
   transition: color var(--transition-fast);
 }
-
 .btn-link-clean:hover {
   text-decoration: underline;
 }
+/* Botón estilo link: sin fondo ni borde, negrita, al hover subrayado */
 
-/* ─── BOTONES DE FILTRO (píldoras) ─── */
+/* 4. BOTONES DE FILTRO */
 .filtros-botones {
   display: flex;
   gap: 4px;
-  background-color: #f1f5f9;
+  background-color: var(--bg-hover);
   padding: 4px;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
 }
+/* Contenedor para botones de filtro: flex con gap, fondo hover, padding y bordes redondeados */
 
 .btn-filtro {
   padding: 6px 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--btn-radius-default);
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
   background: transparent;
-  color: #64748b;
+  color: var(--text-muted);
 }
-
 .btn-filtro:hover {
-  color: #1a2b49;
+  color: var(--primary-color);
   background-color: rgba(255, 255, 255, 0.5);
 }
-
 .btn-filtro.activo {
   background-color: white;
-  color: #1a2b49;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  color: var(--primary-color);
+  box-shadow: var(--shadow-sm);
 }
-
-.btn-filtro.activo:hover {
-  background-color: white;
-}
+/* Botón de filtro: padding pequeño, sin borde, transparente, texto gris. Al hover: texto primario con fondo blanco semi-transparente. Activo: fondo blanco, texto primario y sombra suave */
