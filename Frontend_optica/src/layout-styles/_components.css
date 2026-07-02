@@ -1,0 +1,92 @@
+/* COMPONENTES - Micro-componentes (estados vacíos, detalles, listas y animaciones específicas) */
+
+/* 1. ESTADO VACÍO (EMPTY STATES) */
+.empleado-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+/* Estado vacío para empleados: texto centrado, padding generoso y color gris */
+
+.empleado-empty-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+/* Ícono de estado vacío: tamaño muy grande y margen inferior */
+
+.empleado-empty-title {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  margin-bottom: var(--spacing-sm);
+}
+/* Título de estado vacío: color primario, negrita, tamaño h3 y margen inferior pequeño */
+
+.empleado-empty-sub {
+  font-size: 0.875rem;
+}
+/* Subtítulo de estado vacío: tamaño pequeño */
+
+/* 2. DETALLE DE CONSULTA (GRIDS) */
+.detalle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 16px;
+}
+/* Grid de detalles de consulta: dos columnas iguales con gap en filas y columnas */
+
+.detalle-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: var(--border-table);
+}
+/* Item de detalle: flex con espacio entre elementos, padding y borde inferior de tabla */
+
+.detalle-item label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+/* Etiqueta de detalle: fuente extra pequeña, negrita, color gris, mayúsculas y espaciado entre letras */
+
+.detalle-item span {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  text-align: right;
+}
+/* Valor de detalle: tamaño pequeño, color de texto principal y alineación derecha */
+
+/* 3. LISTAS DE ACTIVIDAD Y CONSULTA */
+.actividad-item {
+  padding: 10px 15px;
+  border-bottom: var(--border-table);
+}
+/* Item de actividad: padding y borde inferior de tabla */
+
+.actividad-item:last-child {
+  border-bottom: none;
+}
+/* Último item de actividad: sin borde inferior */
+
+.consulta-header {
+  cursor: pointer;
+}
+/* Cabecera de consulta: cursor pointer para indicar interactividad */
+
+.consulta-detalle {
+  background-color: var(--bg-hover);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+/* Detalle de consulta: fondo hover, bordes redondeados medios y padding */
+
+/* 4. ANIMACIONES ESPECÍFICAS DE COMPONENTES */
+.gestion-contenido-scroll > div,
+.form-modal,
+.login-form-box {
+  animation: fadeSlideUp 0.5s ease-out 0.1s backwards;
+}
+/* Aplica la animación fadeSlideUp a: hijos directos del contenedor de scroll, modales de formulario y cajas de login. Duración 0.5s, salida suave, retraso 0.1s y aplica estilos iniciales antes de la animación */

@@ -1,0 +1,96 @@
+/* TIPOGRAFIA - Sistema de Jerarquía Tipográfica para toda la aplicación */
+
+/* 1. CONFIGURACIÓN GLOBAL */
+body {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+/* Estilos tipográficos base del body: familia de fuentes con fallbacks (Inter primero, luego system fonts), tamaño 14px, altura de línea 1.5, color de texto principal y suavizado de fuentes en WebKit */
+
+/* 2. JERARQUÍA DE ENCABEZADOS */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 16px 0;
+  color: var(--primary-color);
+  font-weight: 700;
+  line-height: 1.2;
+}
+/* Todos los encabezados: margen inferior de 16px, color primario, peso negrita y altura de línea 1.2 */
+
+h1 {
+  font-size: var(--fs-h1);
+}
+/* Título h1: tamaño definido en variable (1.85rem) */
+
+h2 {
+  font-size: var(--fs-h2);
+}
+/* Título h2: tamaño definido en variable (1.5rem) */
+
+h3 {
+  font-size: var(--fs-h3);
+}
+/* Título h3: tamaño definido en variable (1.25rem) */
+
+h4 {
+  font-size: var(--fs-h4);
+}
+/* Título h4: tamaño definido en variable (1.1rem) */
+
+/* 3. TEXTOS Y PÁRRAFOS */
+p {
+  margin: 0 0 16px 0;
+  color: var(--text-main);
+}
+/* Párrafos: margen inferior de 16px y color de texto principal */
+
+.text-muted {
+  color: var(--text-muted);
+}
+/* Texto atenuado: color gris */
+
+.text-small {
+  font-size: var(--fs-sm);
+}
+/* Texto pequeño: tamaño definido en variable (0.85rem) */
+
+.text-bold {
+  font-weight: 600;
+}
+/* Texto en negrita: peso seminegrita (600) */
+
+/* 4. ENLACES */
+a {
+  color: var(--accent-hover);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+/* Enlaces: color acento oscuro, sin subrayado y transición suave */
+
+a:hover {
+  text-decoration: underline;
+}
+/* Al pasar el mouse: subrayado */
+
+/* 5. ETIQUETAS DE FORMULARIO (Vinculadas a _forms.css) */
+label {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+/* Etiquetas de formulario: bloque, fuente pequeña, peso seminegrita, color de texto principal y margen inferior de 6px */

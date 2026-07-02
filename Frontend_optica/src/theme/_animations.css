@@ -1,0 +1,67 @@
+/* ANIMACIONES - Controlan transiciones y movimientos de elementos en la interfaz */
+
+/* ANIMACIÓN DE ROTACIÓN (Ej: Spinners) */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Rotación infinita para spinners o íconos de carga */
+.spin {
+  animation: spin 0.7s linear infinite;
+}
+
+/* ANIMACIÓN DE ENTRADA (FADE IN) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Aparición gradual con cambio de opacidad */
+
+/* ANIMACIÓN DE ENTRADA MODAL (SLIDE UP) */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Entrada de modal subiendo desde abajo mientras aparece */
+
+/* ANIMACIÓN DE SALIDA MODAL (SLIDE DOWN) */
+@keyframes slideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+/* Salida de modal bajando mientras desaparece */
+
+/* ANIMACIÓN DE ENTRADA */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Animación que combina desvanecido y desplazamiento ascendente para la entrada de elementos */
+
+.gestion-wrapper {
+  animation: fadeSlideUp 0.5s ease-out 0.1s backwards;
+}
+/* Aplica la animación al contenedor principal con duración de 0.5s y retraso de 0.1s */

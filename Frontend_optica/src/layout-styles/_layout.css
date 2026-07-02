@@ -1,0 +1,100 @@
+/* LAYOUT - Estructura global, contenedores y esqueleto de la aplicación */
+
+/* 1. ESTRUCTURA GLOBAL */
+body {
+  margin: 0;
+  background-color: var(--bg-hover);
+  color: var(--text-main);
+}
+/* Estilos base del body: sin margen, fondo hover y color de texto principal */
+
+.main-wrapper {
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+  align-items: stretch;
+}
+/* Contenedor principal: flex, altura mínima de toda la pantalla, oculta desborde horizontal y estira los hijos */
+
+/* 2. CONTENEDORES DE CONTENIDO */
+.content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-left: var(--sidebar-width);
+  height: 100vh;
+  overflow: hidden;
+  transition: var(--transition-sidebar);
+}
+/* Contenedor de contenido: ocupa espacio flexible, flex en columna, ancho mínimo 0, margen izquierdo según ancho del sidebar, altura completa del viewport, overflow oculto y transición suave para sidebar */
+
+.content-container.collapsed {
+  margin-left: var(--sidebar-width-collapsed);
+  max-width: calc(100vw - var(--sidebar-width-collapsed));
+}
+/* Cuando el sidebar está colapsado: margen izquierdo reducido y ancho máximo ajustado al viewport menos el sidebar colapsado */
+
+.main-page-content {
+  padding: 0 20px 20px 20px;
+  flex: 1;
+  overflow-y: auto;
+  scroll-padding-top: 20px;
+}
+/* Contenido principal de la página: padding, ocupa espacio flexible, scroll vertical automático y padding superior para scroll */
+
+/* 3. DASHBOARD Y GRIDS DE PÁGINA */
+.dashboard-container {
+  min-height: 85vh;
+  padding: var(--spacing-md);
+}
+/* Contenedor del dashboard: altura mínima del 85% del viewport y padding mediano */
+
+.dashboard-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+/* Grid de KPIs del dashboard: columnas responsivas con mínimo de 200px y gap mediano */
+
+/* 4. WRAPPERS DE COMPONENTES */
+.gestion-table-wrapper {
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  box-sizing: border-box;
+}
+/* Wrapper para tablas de gestión: fondo blanco, bordes redondeados medios, padding grande, sombra suave, ancho completo y box-sizing border-box */
+
+/* 5. MODALES (OVERLAY) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+/* Overlay de modal: posición fija ocupando toda la pantalla, fondo semitransparente, flex centrado y z-index alto */
+
+/* 6. AJUSTES RESPONSIVE GLOBAL */
+@media (max-width: var(--breakpoint-md)) {
+  .content-container {
+    margin-left: var(--sidebar-width-collapsed);
+    max-width: calc(100vw - var(--sidebar-width-collapsed));
+  }
+}
+/* En pantallas medianas (768px): contenedor de contenido con sidebar colapsado */
+
+@media (max-width: 768px) {
+  .dashboard-kpi-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+/* En pantallas pequeñas (768px): grid de KPIs con columnas de mínimo 150px */
