@@ -1,0 +1,116 @@
+/* TABLAS - Estructura y estilos de datos para listados y grillas */
+
+/* TABLA BASE */
+.gestion-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--fs-sm);
+  table-layout: auto;
+}
+/* Tabla base: ancho completo, bordes separados sin espacio, fuente pequeña y diseño automático de columnas */
+
+/* CABECERA */
+.gestion-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 14px;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* Celdas de cabecera: posición sticky en la parte superior, fondo primario, texto blanco, padding, alineación izquierda y borde derecho semitransparente blanco */
+
+/* CELDAS DEL CUERPO */
+.gestion-table tbody td {
+  height: 52px;
+  padding: 0 14px;
+  color: var(--text-main);
+  border-bottom: var(--border-table);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Celdas del cuerpo: altura fija de 52px, padding horizontal, color de texto principal, borde inferior de tabla, borde derecho semitransparente negro, alineación vertical media, texto sin salto de línea, overflow oculto y truncado con elipsis */
+
+.gestion-table td:last-child,
+.gestion-table th:last-child {
+  border-right: none;
+}
+/* Última celda de fila y cabecera: sin borde derecho */
+
+.gestion-table tbody tr:hover td {
+  background-color: var(--bg-hover);
+}
+/* Al pasar el mouse sobre una fila: fondo color hover en todas sus celdas */
+
+/* TRUNCADO */
+.gestion-table .truncado {
+  display: block;
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Texto truncado: bloque, ancho máximo de 180px, texto sin salto de línea, overflow oculto y truncado con elipsis */
+
+/* ACCIONES */
+.gestion-acciones {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  min-width: 160px;
+}
+/* Contenedor de acciones: flex con alineación centrada, gap pequeño y ancho mínimo de 160px */
+
+.gestion-btn {
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  transition: transform 0.1s;
+}
+/* Botón de acción en tabla: padding reducido, flex inline con alineación centrada, altura de 32px y transición de transformación rápida */
+
+.gestion-btn.deshabilitado {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+/* Botón deshabilitado: opacidad reducida, cursor de no permitido y sin interacción */
+
+.gestion-btn:hover {
+  transform: scale(1.05);
+}
+/* Al pasar el mouse: escala sutil del botón */
+
+/* ICONOS ENLACE */
+.gestion-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition:
+    background-color var(--transition-fast),
+    transform 0.1s;
+}
+/* Enlace con ícono: flex inline centrado, 32x32, forma circular, transiciones de fondo y transformación */
+
+.gestion-icon-link:hover {
+  background-color: rgba(var(--primary-rgb), 0.1);
+  transform: scale(1.05);
+}
+/* Al pasar el mouse: fondo primario con transparencia y escala sutil */
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .gestion-table {
+    font-size: 0.8rem;
+  }
+}
+/* En pantallas pequeñas: fuente más reducida para la tabla */

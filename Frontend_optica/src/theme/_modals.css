@@ -1,0 +1,58 @@
+/* OVERLAYS Y MODALES - Sistema de ventanas emergentes y fondos atenuados */
+
+/* OVERLAY: Fondo atenuado detrás del modal */
+.gestion-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(var(--primary-rgb), 0.15);
+  backdrop-filter: var(--blur-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn var(--transition-fast) ease-out;
+}
+/* Fondo overlay: posición fija ocupando toda la pantalla, fondo con transparencia primaria al 15%, efecto de desenfoque, flex centrado, z-index alto para estar por encima de todo y animación de entrada fadeIn rápida */
+
+/* MODAL BASE: Ventana emergente */
+.gestion-modal {
+  background: var(--bg-surface);
+  border-radius: var(--modal-radius);
+  padding: var(--modal-padding-y) var(--modal-padding-x);
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  max-width: var(--modal-max-width);
+  width: 90%;
+  animation: slideUp var(--transition-normal) ease-out;
+  border-top: 4px solid transparent;
+  transition: border-top var(--transition-normal);
+}
+/* Modal base: fondo blanco, bordes redondeados modernos, padding definido en variables, texto centrado, sombra grande, ancho máximo de 420px y 90% de ancho, animación de entrada slideUp, borde superior transparente de 4px con transición suave */
+
+/* MODAL DE ERROR: Cambio fluido del borde */
+.gestion-modal.error {
+  border-top-color: var(--danger-color);
+}
+/* Modal de error: borde superior color rojo */
+
+/* MODAL DE ÉXITO: Cambio fluido del borde */
+.gestion-modal.success {
+  border-top-color: var(--success-color);
+}
+/* Modal de éxito: borde superior color verde */
+
+/* ICONO DEL MODAL */
+.gestion-modal-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+/* Ícono del modal: tamaño grande y margen inferior pequeño */
+
+/* MENSAJE DEL MODAL */
+.gestion-modal-msg {
+  color: var(--text-main);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.5;
+}
+/* Mensaje del modal: color de texto principal, fuente pequeña, margen inferior grande y altura de línea 1.5 para legibilidad */
