@@ -209,7 +209,7 @@ export function useUsuarios() {
       icono: "bi-lock-fill",
       tooltip: "Bloquear",
       clase: "danger",
-      visible: (u) => u.estadoUsuario === "Activo",
+      visible: (u) => u.estadoUsuario?.toUpperCase() === "ACTIVO",
       deshabilitado: (u) => !puedeModificarFila(u),
     },
     {
@@ -217,7 +217,7 @@ export function useUsuarios() {
       icono: "bi-unlock-fill",
       tooltip: "Desbloquear",
       clase: "success",
-      visible: (u) => u.estadoUsuario === "Bloqueado",
+      visible: (u) => u.estadoUsuario?.toUpperCase() === "BLOQUEADO",
       deshabilitado: (u) => !puedeModificarFila(u),
     },
     {
@@ -225,7 +225,7 @@ export function useUsuarios() {
       icono: "bi-arrow-repeat",
       tooltip: "Reactivar",
       clase: "success",
-      visible: (u) => u.estadoUsuario === "Inactivo",
+      visible: (u) => u.estadoUsuario?.toUpperCase() === "INACTIVO",
       deshabilitado: (u) => !puedeModificarFila(u),
     },
     {
@@ -233,7 +233,7 @@ export function useUsuarios() {
       icono: "bi bi-person-x-fill",
       tooltip: "Eliminar",
       clase: "danger",
-      visible: (u) => u.estadoUsuario !== "Inactivo",
+      visible: (u) => u.estadoUsuario?.toUpperCase() !== "INACTIVO",
       deshabilitado: (u) => !puedeModificarFila(u),
     },
   ];
