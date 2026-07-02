@@ -22,9 +22,6 @@ public class ArchivoAdjuntoMapper {
             ConsultaEntity consulta) {
         return ArchivoAdjuntoEntity.builder()
                 .consulta(consulta)
-                .nombreArchivo(dto.nombreArchivo())
-                .rutaAlmacenamiento(dto.rutaAlmacenamiento())
-                .tipoContenido(dto.tipoContenido())
                 .build();
     }
 
