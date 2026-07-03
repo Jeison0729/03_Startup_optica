@@ -84,7 +84,7 @@ body {
 /* Overlay de modal: posición fija ocupando toda la pantalla, fondo semitransparente, flex centrado y z-index alto */
 
 /* 6. AJUSTES RESPONSIVE GLOBAL */
-@media (max-width: var(--breakpoint-md)) {
+@media (--breakpoint-md) {
   .content-container {
     margin-left: var(--sidebar-width-collapsed);
     max-width: calc(100vw - var(--sidebar-width-collapsed));

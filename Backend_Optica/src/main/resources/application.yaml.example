@@ -1,5 +1,5 @@
 # ==========================================================
-# CONFIGURACIÓN PRINCIPAL: application.yml
+# CONFIGURACIÓN PRINCIPAL: application.yml (EXAMPLE)
 # ==========================================================
 
 spring:
@@ -44,6 +44,11 @@ spring:
       #            las entidades Java. No crea ni modifica nada.
       # Otras opciones: create, create-drop, update, none
       ddl-auto: validate
+
+      # Estrategia de nombrado físico de las tablas y columnas.
+      # Mapea automáticamente nombres camelCase de Java a snake_case en SQL.
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
 
     # Muestra las consultas SQL generadas en la consola.
     # false en producción, true solo para depurar en desarrollo.
@@ -90,15 +95,32 @@ spring:
           # Tiempo máximo para enviar datos al servidor (ms).
           writetimeout: 3000
 
+# --- SERVIDOR
+# Configuración del puerto de escucha local para el backend.
+server:
+  port: 8083
+
 # --- JWT (JSON Web Token)
 # Configuración para la autenticación por tokens.
-# Va fuera del bloque "spring" porque es una propiedad propia,
-# no de Spring Boot.
+# Va fuera del bloque "spring" porque es una propiedad propia, no de Spring Boot.
 jwt:
 
   # Clave secreta para firmar y verificar los tokens de sesión.
   # Viene del .env → JWT_SECRET
   # Nunca debe estar escrita directamente aquí en texto plano.
   secret: ${JWT_SECRET}
+
+# --- ALMACENAMIENTO DE ARCHIVOS
+# Configuración de credenciales y endpoints para almacenamiento en la nube (Cloudflare R2).
+storage:
+  r2:
+    # URL del endpoint del contenedor de Cloudflare.
+    endpoint: ${R2_ENDPOINT}
+    # Llave de acceso pública (Access Key ID).
+    access-key: ${R2_ACCESS_KEY}
+    # Llave de acceso privada (Secret Access Key).
+    secret-key: ${R2_SECRET_KEY}
+    # Nombre del contenedor/bucket asignado.
+    bucket: ${R2_BUCKET}
 
 # ==========================================================

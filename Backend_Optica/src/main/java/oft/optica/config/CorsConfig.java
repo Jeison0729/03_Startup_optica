@@ -18,7 +18,9 @@ public class CorsConfig {
 
         // Orígenes permitidos
         config.setAllowedOrigins(List.of(
-                "http://localhost:5173"   // Vue + Vite (desarrollo)
+                "http://localhost:5173",  // Vue + Vite (desarrollo)
+                "http://localhost:4200"    // Frontend servido por Nginx dentro de Docker
+
         ));
 
         // Métodos HTTP permitidos

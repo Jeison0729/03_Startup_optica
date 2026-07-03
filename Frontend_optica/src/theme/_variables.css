@@ -119,3 +119,6 @@
   --spinner-thickness: 2px;
   /* Configuración de filtros visuales y spinners: bordes redondeados, padding y dimensiones */
 }
+
+@custom-media --breakpoint-md (max-width: 768px);
+@custom-media --breakpoint-sm (max-width: 480px);

@@ -1,7 +1,7 @@
 /* RESPONSIVO - Ajustes de diseño para móviles y tablets */
 
 /* 1. TABLETS Y MÓVILES (Max-width: 768px) */
-@media (max-width: var(--breakpoint-md)) {
+@media (--breakpoint-md) {
   .sidebar {
     width: var(--sidebar-width-collapsed);
   }
@@ -58,7 +58,7 @@
 /* Ajustes responsivos para tablets y móviles con ancho máximo de 768px */
 
 /* 2. MÓVILES PEQUEÑOS (Max-width: 480px) */
-@media (max-width: var(--breakpoint-sm)) {
+@media (--breakpoint-sm) {
   .sidebar {
     width: var(--sidebar-width-mobile);
   }
