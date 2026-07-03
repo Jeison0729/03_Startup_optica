@@ -216,15 +216,15 @@ Acciones registradas: login, bloqueos, CRUD de usuarios, pacientes, consultas, s
 | Módulo | Backend | Frontend |
 |--------|--------|--------|
 | Autenticación JWT | ✅ Completo | ✅ Completo |
-| Usuarios y Roles | ✅ Completo | ⏳ En desarrollo |
+| Usuarios y Roles | ✅ Completo | ✅ Completo  |
 | Recuperación de contraseña | ✅ Completo | ✅ Completo |
-| Catálogos | ✅ Completo | ⏳ En desarrollo |
-| Pacientes | ✅ Completo | ⏳ En desarrollo |
-| Consultas | ✅ Completo | ⏳ En desarrollo |
-| Mediciones optométricas | ✅ Completo | ⏳ En desarrollo |
-| Acompañantes | ✅ Completo | ⏳ En desarrollo |
-| Archivos adjuntos | ✅ Completo | ⏳ En desarrollo |
-| Auditoría | ✅ Completo | ⏳ En desarrollo |
+| Catálogos | ✅ Completo | ✅ Completo  |
+| Pacientes | ✅ Completo | ✅ Completo  |
+| Consultas | ✅ Completo | ✅ Completo  |
+| Mediciones optométricas | ✅ Completo | ✅ Completo  |
+| Acompañantes | ✅ Completo | ✅ Completo  |
+| Archivos adjuntos | ✅ Completo | ✅ Completo  |
+| Auditoría | ✅ Completo | ✅ Completo  |
 ---
 
 *Proyecto: Sistema de Historia Clínica Optométrica — `bd_optica`*
