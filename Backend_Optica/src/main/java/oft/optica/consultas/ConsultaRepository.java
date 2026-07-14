@@ -10,19 +10,18 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
 @Repository
 public interface ConsultaRepository extends JpaRepository<ConsultaEntity, Integer> {
 
     @Query("""
-            SELECT c FROM ConsultaEntity c
-            JOIN FETCH c.paciente
-            JOIN FETCH c.optometra
-            JOIN FETCH c.estado
-            WHERE (:idPaciente IS NULL OR c.paciente.id = :idPaciente)
-              AND (:idEstado   IS NULL OR c.estado.id   = :idEstado)
-              AND (CAST(:desde AS localdatetime) IS NULL OR c.fechaConsulta >= :desde)
-              AND (CAST(:hasta AS localdatetime) IS NULL OR c.fechaConsulta <= :hasta)
+            SELECT consultas FROM ConsultaEntity consultas
+            JOIN FETCH consultas.paciente
+            JOIN FETCH consultas.optometra
+            JOIN FETCH consultas.estado
+            WHERE (:idPaciente IS NULL OR consultas.paciente.id = :idPaciente)
+              AND (:idEstado   IS NULL OR consultas.estado.id   = :idEstado)
+              AND (CAST(:desde AS localdatetime) IS NULL OR consultas.fechaConsulta >= :desde)
+              AND (CAST(:hasta AS localdatetime) IS NULL OR consultas.fechaConsulta <= :hasta)
             """)
     Page<ConsultaEntity> buscarConFiltros(
             @Param("idPaciente") Integer idPaciente,
@@ -48,4 +47,6 @@ public interface ConsultaRepository extends JpaRepository<ConsultaEntity, Intege
     long countByEstadoCodigo(String codigo);
 
     long countByFechaConsultaBetween(LocalDateTime inicio, LocalDateTime fin);
+
+    long countByEstadoCodigoAndFechaConsultaBetween(String codigo, LocalDateTime desde, LocalDateTime hasta);
 }

@@ -4,7 +4,7 @@ import { onMounted, watch, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useDashboard } from "../composables/useDashboard";
 import KpiCard from "../components/dashboard/KpiCard.vue";
-import ChartBar from "../components/dashboard/ChartBar.vue";
+import ChartDona from "../components/dashboard/ChartDona.vue";
 
 // ─── INICIALIZACIÓN ──────────────────────────────────────────
 const route = useRoute();
@@ -14,7 +14,6 @@ const {
   auth,
   cargando,
   error,
-  esDev,
   kpisVisibles,
   consultasPorDia,
   ultimasActividades,
@@ -25,10 +24,6 @@ const filtroTiempo = ref("semana");
 
 function irA(ruta) {
   router.push(ruta);
-}
-
-function refrescar() {
-  cargarDashboard(filtroTiempo.value);
 }
 
 function formatFecha(fecha) {
@@ -42,73 +37,36 @@ function formatFecha(fecha) {
 }
 
 // ─── WATCHERS ──────────────────────────────────────────────────
-watch(filtroTiempo, (nuevo) => {
-  cargarDashboard(nuevo);
-});
-
+watch(filtroTiempo, (nuevo) => cargarDashboard(nuevo));
 watch(
   () => route.path,
-  () => {
-    cargarDashboard(filtroTiempo.value);
-  },
+  () => cargarDashboard(filtroTiempo.value),
 );
+onMounted(() => cargarDashboard(filtroTiempo.value));
 
 // ─── CICLO DE VIDA ────────────────────────────────────────────
-onMounted(() => {
-  cargarDashboard(filtroTiempo.value);
-});
+onMounted(() => cargarDashboard(filtroTiempo.value));
 </script>
-
 <template>
   <div class="gestion-wrapper">
     <div class="gestion-header gestion-header-fijo">
       <div>
         <h2 class="gestion-title">
           <i class="bi bi-speedometer2 me-2"></i>
-          Asi va tu Día
+          Así va tu día
         </h2>
         <p class="gestion-subtitle">
           Bienvenido,
           <strong>{{ auth?.usuario || "Usuario" }}</strong>
-          <span class="badge bg-info ms-2"></span>
         </p>
       </div>
-      <div class="gestion-header-actions">
-        <div class="filtros-botones">
-          <button
-            class="btn-filtro"
-            :class="{ activo: filtroTiempo === 'hoy' }"
-            @click="filtroTiempo = 'hoy'"
-          >
-            Hoy
-          </button>
-          <button
-            class="btn-filtro"
-            :class="{ activo: filtroTiempo === 'semana' }"
-            @click="filtroTiempo = 'semana'"
-          >
-            Semana
-          </button>
-          <button
-            class="btn-filtro"
-            :class="{ activo: filtroTiempo === 'mes' }"
-            @click="filtroTiempo = 'mes'"
-          >
-            Mes
-          </button>
-          <button
-            class="btn-filtro"
-            :class="{ activo: filtroTiempo === 'trimestre' }"
-            @click="filtroTiempo = 'trimestre'"
-          >
-            Trimestre
-          </button>
-        </div>
-        <button class="gestion-btn-actualizar" @click="refrescar">
-          <i class="bi bi-arrow-clockwise"></i>
-          Actualizar
-        </button>
-      </div>
+      <button
+        class="gestion-btn-actualizar"
+        @click="cargarDashboard(filtroTiempo)"
+      >
+        <i class="bi bi-arrow-clockwise"></i>
+        Actualizar
+      </button>
     </div>
 
     <div class="gestion-contenido-scroll">
@@ -123,7 +81,6 @@ onMounted(() => {
       </div>
 
       <div v-else>
-        <!-- KPIS DINÁMICOS SEGÚN ROL -->
         <div class="dashboard-kpi-grid mb-4">
           <KpiCard
             v-for="kpi in kpisVisibles"
@@ -143,29 +100,51 @@ onMounted(() => {
                 class="grafica-header d-flex justify-content-between align-items-center"
               >
                 <strong>
-                  <i class="bi bi-bar-chart me-1"></i>
-                  Consultas Ok
+                  <i class="bi bi-pie-chart me-1"></i>
+                  Distribución de consultas
                 </strong>
-                <span class="badge bg-light text-dark">
-                  <i class="bi bi-info-circle"></i>
-                  {{
-                    consultasPorDia?.datasets?.[0]?.data?.reduce(
-                      (a, b) => a + b,
-                      0,
-                    ) || 0
-                  }}
-                  total
-                </span>
+                <div class="filtros-botones">
+                  <button
+                    class="btn-filtro"
+                    :class="{ activo: filtroTiempo === 'hoy' }"
+                    @click="filtroTiempo = 'hoy'"
+                  >
+                    Hoy
+                  </button>
+                  <button
+                    class="btn-filtro"
+                    :class="{ activo: filtroTiempo === 'semana' }"
+                    @click="filtroTiempo = 'semana'"
+                  >
+                    Semana
+                  </button>
+                  <button
+                    class="btn-filtro"
+                    :class="{ activo: filtroTiempo === 'mes' }"
+                    @click="filtroTiempo = 'mes'"
+                  >
+                    Mes
+                  </button>
+                  <button
+                    class="btn-filtro"
+                    :class="{ activo: filtroTiempo === 'trimestre' }"
+                    @click="filtroTiempo = 'trimestre'"
+                  >
+                    Trimestre
+                  </button>
+                </div>
               </div>
               <div class="grafica-body">
-                <ChartBar
-                  v-if="consultasPorDia?.labels?.length > 0"
+                <ChartDona
+                  v-if="
+                    consultasPorDia?.datasets?.[0]?.data?.some((v) => v > 0)
+                  "
                   :data="consultasPorDia"
                   height="250px"
                 />
                 <div v-else class="text-center py-4 text-muted">
-                  <i class="bi bi-bar-chart-line fs-1 d-block"></i>
-                  <p>Sin datos disponibles para este período</p>
+                  <i class="bi bi-pie-chart fs-1 d-block"></i>
+                  <p>Sin consultas para este período</p>
                 </div>
               </div>
             </div>
@@ -178,7 +157,7 @@ onMounted(() => {
               >
                 <strong>
                   <i class="bi bi-clock-history me-1"></i>
-                  Últimas Actividades
+                  Últimas actividades
                 </strong>
                 <span class="badge bg-light text-dark">
                   {{ ultimasActividades?.length || 0 }}

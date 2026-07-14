@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public interface LogAuditoriaRepository extends JpaRepository<LogAuditoriaEntity, Integer>, JpaSpecificationExecutor<LogAuditoriaEntity> {
@@ -33,4 +34,7 @@ public interface LogAuditoriaRepository extends JpaRepository<LogAuditoriaEntity
             Pageable pageable);
 
     long countByFechaEventoBetween(LocalDateTime inicio, LocalDateTime fin);
+
+    List<LogAuditoriaEntity> findTop8ByOrderByFechaEventoDesc();
+
 }

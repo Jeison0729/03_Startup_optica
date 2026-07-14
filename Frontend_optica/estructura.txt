@@ -1,0 +1,149 @@
+Listado de rutas de carpetas para el volumen Windows-SSD
+El número de serie del volumen es 0000020E 60B7:C74D
+C:\USERS\FARFA\DESKTOP\01 STRTP\03_STARTUP_OPTICA\FRONTEND_OPTICA\SRC
+|   App.vue
+|   main.js
+|   style.css
+|   
++---api
+|       acompanantes.api.js
+|       archivos.api.js
+|       auditoria.api.js
+|       auth.api.js
+|       axios.js
+|       catalogos.api.js
+|       consultas.api.js
+|       dashboard.api.js
+|       historia.api.js
+|       mediciones.api.js
+|       pacientes.api.js
+|       roles.api.js
+|       solicitudes.api.js
+|       usuarios.api.js
+|       usuariosRoles.api.js
+|       
++---assets
+|   |   hero.png
+|   |   vite.svg
+|   |   vue.svg
+|   |   
+|   \---images
+|           login-bg.jpg
+|           
++---components
+|   +---auditoria
+|   |       auditoria.config.js
+|   |       
+|   +---consultas
+|   |       consultas.config.js
+|   |       ConsultasHeader.vue
+|   |       ConsultasModales.vue
+|   |       UiDetConsulta.vue
+|   |       UiMedicion.vue
+|   |       
+|   +---dashboard
+|   |       ChartBar.vue
+|   |       ChartDona.vue
+|   |       KpiCard.vue
+|   |       
+|   +---historia
+|   |       HistoriaArchivos.vue
+|   |       HistoriaConsultaItem.vue
+|   |       HistoriaPacienteCard.vue
+|   |       HistoriaResumen.vue
+|   |       
+|   +---pacientes
+|   |       pacientes.config.js
+|   |       
+|   \---shared
+|           UiCambiarEstado.vue
+|           UiFileUpload.vue
+|           UiFiltros.vue
+|           UiFormModal.vue
+|           UiLoader.vue
+|           UiModal.vue
+|           UiNavbar.vue
+|           UiSidebar.vue
+|           UiTable.vue
+|           
++---composables
+|       useAcompanantes.js
+|       useArchivos.js
+|       useAuditoria.js
+|       useAuditoriaUI.js
+|       useAuth.js
+|       useCatalogos.js
+|       useConfirmacion.js
+|       useConsultaForm.js
+|       useConsultas.js
+|       useConsultasUI.js
+|       useDashboard.js
+|       useHistoriaClinica.js
+|       useLoader.js
+|       useMediciones.js
+|       useMedicionForm.js
+|       usePacienteForm.js
+|       usePacientes.js
+|       usePacienteSelector.js
+|       usePacientesUI.js
+|       useSolicitudes.js
+|       useUsuarioForm.js
+|       useUsuarios.js
+|       
++---guards
+|       auth.guard.js
+|       
++---layout
+|       MainLayout.vue
+|       
++---layout-styles
+|       _components.css
+|       _footer.css
+|       _layout.css
+|       _navbar.css
+|       _responsive.css
+|       _sidebar.css
+|       _typography.css
+|       
++---models
+|       acompanante.model.js
+|       auth.model.js
+|       consulta.model.js
+|       paciente.model.js
+|       usuario.model.js
+|       
++---router
+|       index.js
+|       
++---stores
+|       auth.store.js
+|       
++---styles
+|       login.css
+|       recuperar.css
+|       
++---theme
+|       _animations.css
+|       _badges.css
+|       _buttons.css
+|       _cards.css
+|       _filters.css
+|       _forms.css
+|       _misc.css
+|       _modals.css
+|       _spinner.css
+|       _tables.css
+|       _variables.css
+|       
+\---views
+        AuditoriaView.vue
+        ConsultasView.vue
+        DashboardView.vue
+        HistoriaClinicaView.vue
+        LoginView.vue
+        PacientesView.vue
+        RecuperarContrasenaView.vue
+        RestablecerContrasenaView.vue
+        SolicitudesView.vue
+        UsuariosView.vue
+        

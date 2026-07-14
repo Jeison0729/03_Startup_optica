@@ -1,21 +1,20 @@
 package oft.optica.shared.dashobard;
 
+import java.util.List;
+
 public record DashboardResponse(
-
-        // ── COMPARTIDOS (ADMIN + DEV) ──────────────────────────
-        long totalPacientesActivos,
-        long totalPacientesInactivos,
-        long consultasHoy,
-        long consultasBorrador,
+        // ── KPIs DEL DÍA (ambos roles) ────────────────────────
         long consultasEnProceso,
-        long consultasFinalizadas,
-        long consultasAnuladas,
-        long pacientesEsteMes,
+        long consultasBorrador,
+        long solicitudesPendientes,
 
-        // ── SOLO DEV (null para ADMIN) ─────────────────────────
-        Long totalUsuarios,
+        // ── KPIs DEL DÍA (solo DEV) ───────────────────────────
         Long usuariosBloqueados,
-        Long solicitudesPendientes,
-        Long logsHoy
+
+        // ── GRÁFICA (dona) ─────────────────────────────────────
+        ConsultasPorDiaData consultasPorDia,
+
+        // ── ACTIVIDADES RECIENTES ──────────────────────────────
+        List<ActividadReciente> ultimasActividades
 ) {
 }
